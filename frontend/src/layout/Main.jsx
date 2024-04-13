@@ -12,8 +12,11 @@ const Main = () => {
   return (
     <div className="bg-prigmayBG">
       {
-      loading ? <LoadingSpinner/> : <div><Navbar/>
+      loading ? <LoadingSpinner/> : <div>
+        <Navbar/>
+        <div className="min-h-screen">
         <Outlet />
+        </div>
         <Footer />
         </div>
       }
