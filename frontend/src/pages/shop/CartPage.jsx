@@ -184,7 +184,7 @@ const CartPage = () => {
                         +
                       </button>
                     </td>
-                    <td>${calculateTotalPrice(item).toFixed(2)}</td>
+                    <td>{calculateTotalPrice(item).toFixed(2)}</td>
                     <td>
                       <button
                         className="btn btn-sm border-none text-red bg-transparent"
@@ -201,6 +201,14 @@ const CartPage = () => {
           </div>
         </div>
         <hr />
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <a href="/products">
+                <button className="btn btn-md bg-green text-white px-8 py-1">
+                  Add more items
+                </button>
+                </a>
+              </div>
+
         <div className="flex flex-col md:flex-row justify-between items-start my-12 gap-8">
           <div className="md:w-1/2 space-y-3">
             <h3 className="text-lg font-semibold">Customer Details</h3>
@@ -215,7 +223,7 @@ const CartPage = () => {
             <p>Total Items: {cart.length}</p>
             <p>
               Total Price:{" "}
-              <span id="total-price">${orderTotal.toFixed(2)}</span>
+              <span id="total-price">{orderTotal.toFixed(2)}</span>
             </p>
             <button className="btn btn-md bg-green text-white px-8 py-1">
               Procceed to Checkout

@@ -1,99 +1,154 @@
 [
-    {
-        "_id": "642c155b2c4774f05c36ee7e",
-        "name": "Organic Strawberries",
-        "description": "Sweet strawberries grown without pesticides, perfect for desserts or snacking.",
-        "image": "/images/products/Strawberries.png",
-        "category": "fruits",
-        "price": 340 
-      },
-    {
-      "_id": "642c155b2c4774f05c36ee88",
-      "name": "Farm Fresh Milk",
-      "description": "Locally sourced farm fresh milk, pasteurized and packed with essential nutrients.",
-      "image": "/images/products/milk.png",
-      "category": "dairy",
-      "price": 115
-    },
-
-    {
-      "_id": "642c155b2c4774f05c36ee01",
-      "name": "Mix 4kg fruit",
-      "description": "Wholesome goodness of locally sourced mixed fruits, bursting essential nutrients.",
-      "image": "/images/products/mix_fruit.png",
-      "category": "fruits",
-      "price": 1250
-    },
-
-    {
-      "_id": "642c155b2c4774f05c36ee7a",
-      "name": "Organic Vegetables Basket",
-      "description": "A variety of freshly harvested organic vegetables straight from the farm.",
-      "image": "/images/products/vegetables.png",
-      "category": "vegetables",
-      "price": 740
-    },
-    {
-      "_id": "642c155b2c4774f05c36ee74",
-      "name": "Handpicked Apples",
-      "description": "Crisp and juicy apples handpicked from our orchard, perfect for snacking or baking.",
-      "image": "/images/products/apple.png",
-      "category": "fruits",
-      "price": 270
-    },
-    {
-      "_id": "642c155b2c4774f05c36ee712",
-      "name": "Pure Honey",
-      "description": "Raw and unfiltered honey straight from the beehives on our farm, rich health benefits.",
-      "image": "/images/products/honey.png",
-      "category": "fruits",
-      "price": 1200
-    },
-    {
-      "_id": "642c155b2c4774f05c36ee7x",
-      "name": "Farm Fresh Chicken",
-      "description": "Organically raised and ethically sourced chicken, tender and full of flavor.",
-      "image": "/images/products/chicken.png",
-      "category": "meat",
-      "price": 340
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7c",
-        "name": "Fresh Organic Eggs",
-        "description": "Organic eggs laid by free-range chickens, rich in nutrients and delicious taste.",
-        "image": "/images/products/egg.png",
-        "category": "meat",
-        "price": 430
-      },
-
-      {
-        "_id": "642c155b2c4774f05c36ee75",
-        "name": "Fresh Organic Mangoes",
-        "description": "Experience the taste of tropical paradise with our succulent mangoes",
-        "image": "/images/products/mango.png",
-        "category": "fruits",
-        "price": 130
-      },
-
-      {
-        "_id": "642c155b2c4774f05c36ee70",
-        "name": "Fresh Organic Oranges",
-        "description": "Juicy, vibrant oranges bursting with refreshing citrus flavor.",
-        "image": "/images/products/orange.png",
-        "category": "fruits",
-        "price": 120
-      },
-
-      {
-        "_id": "642c155b2c4774f05c36ee66",
-        "name": "Fresh pineapple juice",
-        "description": "Juicy, vibrant pineapple bursting with refreshing citrus flavor.",
-        "image": "/images/products/drinks1.png",
-        "category": "drinks",
-        "price": 120
-      }
-
-
-
-  ]
-  
+  {
+    "_id": "642c155b2c4774f05c36ee71",
+    "name": "Organic Strawberries",
+    "description": "Sweet strawberries grown without pesticides, perfect for desserts or snacking.",
+    "image": "/images/products/Strawberries.png",
+    "category": "fruits",
+    "price": 340
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee82",
+    "name": "Farm Fresh Milk",
+    "description": "Locally sourced farm fresh milk, pasteurized and packed with essential nutrients.",
+    "image": "/images/products/milk.png",
+    "category": "dairy",
+    "price": 115
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee03",
+    "name": "Mix 4kg fruit",
+    "description": "Wholesome goodness of locally sourced mixed fruits, bursting with essential nutrients.",
+    "image": "/images/products/mix_fruit.png",
+    "category": "fruits",
+    "price": 1250
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee74",
+    "name": "Organic Vegetables Basket",
+    "description": "A variety of freshly harvested organic vegetables straight from the farm.",
+    "image": "/images/products/vegetables.png",
+    "category": "vegetables",
+    "price": 740
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee75",
+    "name": "Handpicked Apples",
+    "description": "Crisp and juicy apples handpicked from our orchard, perfect for snacking or baking.",
+    "image": "/images/products/apple.png",
+    "category": "fruits",
+    "price": 270
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee716",
+    "name": "Pure Honey",
+    "description": "Raw and unfiltered honey straight from the beehives on our farm, rich health benefits.",
+    "image": "/images/products/honey.png",
+    "category": "fruits",
+    "price": 1200
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee77",
+    "name": "Farm Fresh Chicken",
+    "description": "Organically raised and ethically sourced chicken, tender and full of flavor.",
+    "image": "/images/products/chicken.png",
+    "category": "meat",
+    "price": 340
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee78",
+    "name": "Fresh Organic Eggs",
+    "description": "Organic eggs laid by free-range chickens, rich in nutrients and delicious taste.",
+    "image": "/images/products/egg.png",
+    "category": "meat",
+    "price": 430
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee79",
+    "name": "Fresh Organic Mangoes",
+    "description": "Experience the taste of tropical paradise with our succulent mangoes",
+    "image": "/images/products/mango.png",
+    "category": "fruits",
+    "price": 130
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee710",
+    "name": "Fresh Organic Oranges",
+    "description": "Juicy, vibrant oranges bursting with refreshing citrus flavor.",
+    "image": "/images/products/orange.png",
+    "category": "fruits",
+    "price": 120
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee611",
+    "name": "Fresh pineapple juice",
+    "description": "Juicy, vibrant pineapple bursting with refreshing citrus flavor.",
+    "image": "/images/products/drinks1.png",
+    "category": "drinks",
+    "price": 120
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee012",
+    "name": "Organic Butter",
+    "description": "Creamy and delicious organic butter from grass-fed cows.",
+    "image": "/images/products/butter.png",
+    "category": "dairy",
+    "price": 250
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee013",
+    "name": "Fresh Goat Meat",
+    "description": "Tender and flavorful goat meat, perfect for curries, stews, and grilling.",
+    "image": "/images/products/goat.png",
+    "category": "meat",
+    "price": 1400
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee014",
+    "name": "Organic Coconut",
+    "description": "Fresh and nutritious organic coconut, ideal for cooking or snacking.",
+    "image": "/images/products/coconut.png",
+    "category": "fruits",
+    "price": 80
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee015",
+    "name": "Fresh Garlic",
+    "description": "Aromatic and flavorful garlic cloves, essential for adding depth to your dishes.",
+    "image": "/images/products/garlic.png",
+    "category": "vegetables",
+    "price": 140
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee016",
+    "name": "Red Onion",
+    "description": "Crisp and pungent red onions, perfect for salads, sandwiches, or pickling.",
+    "image": "/images/products/onion.png",
+    "category": "vegetables",
+    "price": 120
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee017",
+    "name": "Fresh Potatoes",
+    "description": "Versatile and nutritious potatoes, great for roasting, mashing, or frying.",
+    "image": "/images/products/potato2.png",
+    "category": "vegetables",
+    "price": 60
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee018",
+    "name": "Crisp Cucumbers",
+    "description": "Crunchy and refreshing cucumbers, perfect for salads or as a healthy snack.",
+    "image": "/images/products/cucumber.png",
+    "category": "vegetables",
+    "price": 80
+  },
+  {
+    "_id": "642c155b2c4774f05c36ee019",
+    "name": "Sweet Carrots",
+    "description": "Sweet and tender carrots, packed with vitamins and perfect for snacking or cooking.",
+    "image": "/images/products/carrot.png",
+    "category": "vegetables",
+    "price": 55
+  }
+]
