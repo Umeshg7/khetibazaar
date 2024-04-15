@@ -35,11 +35,11 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <a href='/' className='text-base'>Home</a>
+        <a href='/' className='text-lg'>Home</a>
       </li>
       <li tabIndex={0}>
         <details>
-          <summary><span className="text-base">My products</span></summary>
+          <summary><span className="text-lg">My products</span></summary>
           <ul className="p-2">
             <li>
               <a href='/products'>All</a>
@@ -61,7 +61,7 @@ const Navbar = () => {
       </li>
       <li tabIndex={0}>
         <details>
-          <summary><span className="text-base">Our Services</span></summary>
+          <summary><span className="text-lg">Our Services</span></summary>
           <ul className="p-2">
             <li>
               <a>Online Order</a>
@@ -76,7 +76,7 @@ const Navbar = () => {
         </details>
       </li>
       <li>
-        <a href='/' className='text-base'>Offers</a>
+        <a href='/' className='text-lg'>Offers</a>
       </li>
     </>
   );
@@ -84,7 +84,7 @@ const Navbar = () => {
   return (
     <header className="max-w-screen-2x1 container mx-auto fixed top-0 right-0 transition-all duration-300 ease-in-out">
       <div className={`navbar px-4 ${isSticky ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out" : ""}`}>
-        <div className="navbar-start">
+        <div className="navbar-start" style={{ paddingLeft: '30px' }}>
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -93,7 +93,7 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a href='/images/'>
+          <a href='/'>
             <img src={logo} alt='logo' style={{ width: '300px', height: '90px' }} />
           </a>
         </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end" style={{ paddingRight: '40px' }}>
           <button className="btn btn-ghost btn-circle mr-3 hidden lg:flex">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </button>

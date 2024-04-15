@@ -11,6 +11,7 @@ export default {
 
           "green" : "#39DB4A",
           "red" : "#FF6868",
+          "brown" : "#4A141B",
           "secondary" : "#555",
           "primaryBG" : "#FCFCFC"
         },
