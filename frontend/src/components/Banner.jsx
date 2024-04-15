@@ -3,7 +3,7 @@ import React from "react";
 const Banner = () => {
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
-      <div className="py-24 flex flex-col md:flex-row-reverse items-center justify-between gap-8">
+      <div className="py-24 flex flex-col md:flex-row-reverse items-center justify-between gap-4 md:gap-8">
 
         {/* img */}
         <div className="md:w-1/2">
@@ -97,7 +97,7 @@ const Banner = () => {
           <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug"> Farmed Fresh, Delivered to Your <span className="text-green">Doorstep!</span>
           </h2>
           <p className="text-[#4A4A4A] text-xl">
-          Discover Freshness from Field to Table! Enjoy Locally Grown Produce at Its Finest. Dive into Seasonal Fruits, Crisp Vegetables, and Nutrient-Packed Grains. Shop Local, Taste Fresh, and Support Sustainable Farming. Welcome to Our place – Where Every Bite is a Delight
+          Discover Freshness from Field to Table! Enjoy Locally Grown Produce at Its Finest. Dive into Seasonal Fruits, Crisp Vegetables, and Nutrient-Packed Grains.
           </p>
           <button className="bg-green font-semibold btn text-white px-8 py-3 rounded-full">
             Order Now 
