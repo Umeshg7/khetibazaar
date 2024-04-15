@@ -38,14 +38,26 @@ const SpecialDishes = () => {
   const slider = React.useRef(null);
 
   useEffect(() => {
-    fetch("/menu.json")
+    fetch("http://localhost:678/menu")
       .then((res) => res.json())
       .then((data) => {
-        const specials = data.filter((item) => item.category === "fruits");
-        // console.log(specials)
-        setRecipes(specials);
+        // Shuffle the data array
+        const shuffledData = shuffleArray(data);
+        // Get the first 9 items from the shuffled array
+        const randomRecipes = shuffledData.slice(0, 5);
+        setRecipes(randomRecipes);
       });
   }, []);
+
+  // Function to shuffle an array
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
   const settings = {
     dots: true,
     infinite: false,
@@ -83,6 +95,7 @@ const SpecialDishes = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 my-20 relative ">
        <div className='text-left'>

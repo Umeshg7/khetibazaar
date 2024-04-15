@@ -76,7 +76,8 @@ const Navbar = () => {
         </details>
       </li>
       <li>
-        <a href='/' className='text-lg'>Offers</a>
+      <Link to="/error" className="text-lg">Offers</Link>
+
       </li>
     </>
   );

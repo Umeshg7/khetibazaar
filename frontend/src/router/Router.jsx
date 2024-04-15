@@ -6,6 +6,7 @@ import Signup from "../components/Signup";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import UpdateProfile from "../pages/dashboard/UpdateProfile";
 import CartPage from "../pages/shop/CartPage";
+import ErrorPage from "../../public/error";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
         {
           path : "/cart-page",
           element : <CartPage/>
+
+        },
+        {
+          path : "/error",
+          element : <ErrorPage/>
 
         },
 
