@@ -51,3 +51,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.blur-background {
+    filter: blur(4px);
+    pointer-events: none; /* Prevents interaction with elements behind the modal */
+  }
+  

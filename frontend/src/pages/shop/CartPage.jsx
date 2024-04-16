@@ -82,7 +82,7 @@ const CartPage = () => {
       }
     }
   };
-
+    //functionalities
   // Calculate the cart subtotal
   const cartSubtotal = cart.reduce((total, item) => {
     return total + calculateTotalPrice(item);
