@@ -22,12 +22,13 @@ const Profile = ({user}) => {
     <label htmlFor="my-drawer-4" className="drawer-button btn btn-ghost btn-circle avatar">
     <div className="w-10 rounded-full">
     {
+      
         // eslint-disable-next-line react/prop-types
         user.photoURL ? <img
         alt="T"
         // eslint-disable-next-line react/prop-types
         src={user.photoURL}
-         /> : <img alt='' src='https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'/>
+         /> : <img alt='' src='https://i.ibb.co/NWZfwBn/636285684763067730-Genius-Portraits-001-modified.png'/>
     }
      </div>
         </label>
@@ -36,6 +37,7 @@ const Profile = ({user}) => {
     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
+      
       <li><a href= "/update-profile">Profile</a></li>
       <li><a>Order</a></li>
       <li><a>Setting</a></li>
