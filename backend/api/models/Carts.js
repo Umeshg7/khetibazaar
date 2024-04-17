@@ -9,7 +9,7 @@ const cartSchema = new Schema({
         required: true,
         minlength: 3
     },
-    recipe: String,
+    discription: String,
     image: String, 
     price: Number,
     quantity: Number,

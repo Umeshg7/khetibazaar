@@ -71,7 +71,7 @@ const Products = () => {
     setCurrentPage(1);
   };
 
-//   console.log(filteredItems);
+  console.log(filteredItems);
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
