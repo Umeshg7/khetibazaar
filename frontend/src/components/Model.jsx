@@ -13,7 +13,7 @@ const Modal = () => {
     const {signUpWithGmail, login} = useContext(AuthContext);
     const [errorMessage, setErrorMessage] = useState("");
 
-    // redirecting to home page or specifig page
+    // redirecting to home page or specific page
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
@@ -22,7 +22,6 @@ const Modal = () => {
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
-    // console.log(email, password)
     login(email, password).then((result) => {
       const user = result.user;
       alert("Login successfull");
@@ -80,12 +79,12 @@ const Modal = () => {
               </label>
             </div>
 
-            {/* error */}
+            {/* error message*/}
             {
               errorMessage ? <p className="text-red text-xs italic">{errorMessage}</p> : ""
             }
 
-            {/* login btn */}
+            {/* login button */}
             <div className="form-control mt-4">
               <input
                 type="submit"
@@ -108,7 +107,7 @@ const Modal = () => {
             >✕</button>
           </form>
 
-          {/* social sign in */}
+          {/* social sign in button */}
           <div className="text-center space-x-3 mb-5">
           <button className="btn hover:bg-grey hover:text-white" onClick={handleLogin} style={{ width: '450px' }}>
             <FaGoogle /> Login with Google

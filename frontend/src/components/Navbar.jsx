@@ -130,7 +130,9 @@ const Navbar = () => {
           <FaRegUser /> Login
         </button>
          }
-              <Modal/>
+         
+         {/* //import login page  */}
+              <Modal/> 
         </div>
       </div>
     </header>

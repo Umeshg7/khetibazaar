@@ -1,6 +1,6 @@
 
 import React, { useContext } from "react";
-import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import  FaGoogle  from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import Modal from "./Model";
@@ -73,9 +73,7 @@ const Signup = () => {
               </label>
             </div>
 
-            {/* error */}
-
-            {/* login btn */}
+            {/* login buttonn */}
             <div className="form-control mt-6">
               <input
                 type="submit"
