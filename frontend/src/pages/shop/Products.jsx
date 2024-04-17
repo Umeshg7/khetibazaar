@@ -135,6 +135,12 @@ const Products = () => {
               Egg & Meat
             </button>
             <button
+              onClick={() => filterItems("grains")}
+              className={selectedCategory === "grains" ? "active" : ""}
+            >
+              Grains
+            </button>
+            <button
               onClick={() => filterItems("dairy")}
               className={selectedCategory === "dairy" ? "active" : ""}
             >
