@@ -143,12 +143,128 @@
     "category": "vegetables",
     "price": 80
   },
-  {
-    "_id": "642c155b2c4774f05c36ee019",
-    "name": "Sweet Carrots",
-    "description": "Sweet and tender carrots, packed with vitamins and perfect for snacking or cooking.",
-    "image": "/images/products/carrot.png",
-    "category": "vegetables",
-    "price": 55
-  }
+  [
+    {
+      "_id": "642c155b2c4774f05c36ee020",
+      "name": "Fenugreek",
+      "description": "Nutritious and versatile, fenugreek is a flavorful herb often used in cooking and traditional medicine.",
+      "image": "/images/products/methi.png",
+      "category": "vegetables",
+      "price": 55
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee021",
+      "name": "Soyabeans",
+      "description": "Protein-rich and versatile, soybeans are a staple in many cuisines worldwide, perfect for a variety of dishes from tofu to tempeh.",
+      "image": "/images/products/soyabean.png",
+      "category": "grains",
+      "price": 140
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee022",
+      "name": "Rice",
+      "description": "A staple food for billions, rice is a versatile grain perfect for a wide range of dishes, from stir-fries to sushi.",
+      "image": "/images/products/rice.png",
+      "category": "grains",
+      "price": 76
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee023",
+      "name": "Oat (Wheat)",
+      "description": "Oats, a hearty grain packed with fiber and nutrients, are a popular breakfast choice and versatile ingredient in baking.",
+      "image": "/images/products/oat.png",
+      "category": "grains",
+      "price": 120
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee024",
+      "name": "Spinach",
+      "description": "Nutrient-rich and flavorful, spinach is a versatile leafy green perfect for salads, smoothies, and cooked dishes.",
+      "image": "/images/products/spinach.png",
+      "category": "vegetables",
+      "price": 30
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee025",
+      "name": "Sugarcane",
+      "description": "Sweet and refreshing, sugarcane juice is a popular beverage in many cultures, enjoyed for its natural sweetness.",
+      "image": "/images/products/sugarcan.png",
+      "category": "drinks",
+      "price": 90
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee026",
+      "name": "Fresh Orange Juice",
+      "description": "Bursting with vitamin C, fresh orange juice is a refreshing and nutritious beverage perfect for any time of day.",
+      "image": "/images/products/orange_juice.png",
+      "category": "",
+      "price": 30
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee027",
+      "name": "Grapes",
+      "description": "Juicy and sweet, grapes are a delicious fruit enjoyed fresh or dried and packed with antioxidants and vitamins.",
+      "image": "/images/products/grapes.png",
+      "category": "fruits",
+      "price": 230
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee028",
+      "name": "Cabbage",
+      "description": "Crisp and versatile, cabbage is a nutritious vegetable perfect for salads, slaws, and cooked dishes.",
+      "image": "/images/products/cabbage.png",
+      "category": "",
+      "price": 55
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee029",
+      "name": "Masoor Dal",
+      "description": "Nutrient-dense and easy to cook, masoor dal is a staple in Indian cuisine, rich in protein and fiber.",
+      "image": "/images/products/dal1.png",
+      "category": "grains",
+      "price": 90
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee030",
+      "name": "Organic Avocado",
+      "description": "Creamy and nutritious, avocados are a versatile fruit perfect for salads, sandwiches, and smoothies.",
+      "image": "/images/products/avacado.png",
+      "category": "fruits",
+      "price": 450
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee031",
+      "name": "Pinto Beans",
+      "description": "Hearty and flavorful, pinto beans are a staple in Mexican cuisine, perfect for soups, stews, and burritos.",
+      "image": "/images/products/bean1.png",
+      "category": "grains",
+      "price": 130
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee032",
+      "name": "Lima Beans",
+      "description": "Creamy and versatile, lima beans are a nutritious legume perfect for soups, salads, and dips.",
+      "image": "/images/products/bean2.png",
+      "category": "fruits",
+      "price": 120
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee033",
+      "name": "Black eye beans",
+      "description": "Hearty and nutritious, black-eyed beans are a versatile legume perfect for soups, salads, and stews.",
+      "image": "/images/products/black_eye.png",
+      "category": "grains",
+      "price": 150
+    },
+    {
+      "_id": "642c155b2c4774f05c36ee034",
+      "name": "Organic Lemons",
+      "description": "Zesty and refreshing, organic lemons are a versatile citrus fruit perfect for adding flavor to dishes and beverages.",
+      "image": "/images/products/lemon.png",
+      "category": "fruits",
+      "price": 450
+    }
+  ]
+  
+
 ]
