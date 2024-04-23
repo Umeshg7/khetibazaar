@@ -166,7 +166,7 @@ const CartPage = () => {
                     <td className="font-medium">{item.name}</td>
                     <td>
                       <button
-                        className="btn btn-xs"
+                        className="btn btn-xs hover:bg-green"
                         onClick={() => handleDecrease(item)}
                       >
                         -
@@ -178,7 +178,7 @@ const CartPage = () => {
                         className="w-10 mx-2 text-center overflow-hidden appearance-none"
                       />
                       <button
-                        className="btn btn-xs"
+                        className="btn btn-xs hover:bg-green"
                         onClick={() => handleIncrease(item)}
                       >
                         +
@@ -187,7 +187,7 @@ const CartPage = () => {
                     <td>{calculateTotalPrice(item).toFixed(2)}</td>
                     <td>
                       <button
-                        className="btn btn-sm border-none text-red bg-transparent"
+                        className="btn btn-sm border-none text-red bg-transparent "
                         onClick={() => handleDelete(item)}
                       >
                         <FaTrash />

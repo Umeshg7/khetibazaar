@@ -1,36 +1,56 @@
-import React, { useContext, useEffect, useState } from 'react';
-import logo from '/images/logo2.png';
+import React, { useContext, useEffect, useState } from 'react'; // Essential React hooks and functions
+import logo from '/images/logo2.png'; // Our logo
 import Modal from './Model';
-import { AuthContext } from '../contexts/AuthProvider';
-import Profile from './Profile'
-import { FaRegUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import useCart from "../hooks/useCart";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // Import QueryClient and QueryClientProvider
+import { AuthContext } from '../contexts/AuthProvider'; // Context for authentication
+import Profile from './Profile'; // User profile component
+import { FaRegUser } from 'react-icons/fa'; // Icon library
+import { Link, useNavigate } from 'react-router-dom'; // React router for navigation
+import useCart from "../hooks/useCart"; // Custom hook to manage cart state
+import Swal from 'sweetalert2'; // Library for alert messages
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // React Query for data-fetching
 
 const Navbar = () => {
-  const [isSticky, setSticky] = useState(false);
-
-  const {user} = useContext(AuthContext);
-  console.log(user)
-  const [cart,refetch] = useCart();
+  const [isSticky, setSticky] = useState(false); // State for sticky navbar
+  const { user } = useContext(AuthContext); // Get user from AuthContext
+  const [cart, refetch] = useCart(); // Get cart items and refetch function
+  const navigate = useNavigate(); // To navigate programmatically
 
   useEffect(() => {
+    // This effect manages the sticky behavior based on scroll position
     const handleScroll = () => {
       const offset = window.scrollY;
-      if (offset > 0) {
-        setSticky(true);
-      } else {
-        setSticky(false);
-      }
+      setSticky(offset > 0); // If scrolled down, make navbar sticky
     };
 
+    // Attach the scroll event listener
     window.addEventListener("scroll", handleScroll);
 
+    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, []); // Run only once when the component mounts
+
+  const handleCartClick = () => {
+    if (user) {
+      // User is logged in, navigate to the cart page
+      navigate('/cart-page');
+    } else {
+      // User is not logged in, prompt them to log in
+      Swal.fire({
+        title: 'Please login to see your cart',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Login now!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById("my_modal_5").showModal();
+        }
+      });
+    }
+  };
 
   const navItems = (
     <>
@@ -48,13 +68,13 @@ const Navbar = () => {
               <a href='/vegetables'>Vegetables</a>
             </li>
             <li>
-              <a>Fruits</a>
+              <a href='/fruits'>Fruits</a>
             </li>
             <li>
-              <a>Grains</a>
+              <a href='/grains'>Grains</a>
             </li>
             <li>
-              <a>Fresh Meat</a>
+              <a href='/fresh-meat'>Fresh Meat</a>
             </li>
           </ul>
         </details>
@@ -77,11 +97,9 @@ const Navbar = () => {
       </li>
       <li>
       <Link to="/error" className="text-lg">Offers</Link>
-
       </li>
       <li>
       <Link to="/aboutus" className="text-lg">About us</Link>
-
       </li>
     </>
   );
@@ -108,29 +126,28 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end" style={{ paddingRight: '40px' }}>
-          <button className="btn btn-ghost btn-circle mr-3 hidden lg:flex">
+        <button className="btn btn-ghost btn-circle mr-3 hidden lg:flex">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </button>
 
-        <Link to="cart-page">
-        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-4 lg:flex hidden items-center justify_center">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-4 lg:flex hidden items-center justify_center" onClick={handleCartClick}>
             <div className="indicator">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
               <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
             </div>
           </div>
-        </Link>
 
           {/* login button */}
           {
-          user? <Profile user={user}/> :  <button
-          onClick={() => document.getElementById("my_modal_5").showModal()}
-          className="btn flex items-center gap-2 rounded-full px-6 bg-green text-white"
-        >
-          <FaRegUser /> Login
-        </button>
-         }
-              <Modal/>
+          user ? <Profile user={user} /> : 
+            <button
+              onClick={() => document.getElementById("my_modal_5").showModal()}
+              className="btn flex items-center gap-2 rounded-full px-6 bg-green text-white"
+            >
+              <FaRegUser /> Login
+            </button>
+          }
+          <Modal />
         </div>
       </div>
     </header>
@@ -138,4 +155,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-

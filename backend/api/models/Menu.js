@@ -9,7 +9,8 @@ const menuSchema = new Schema({
         required: true,
         minlength: 3
     },
-    recipe: String,
+    _id: String,
+    description: String,
     image: String, 
     category: String,
     price: Number,
