@@ -8,6 +8,10 @@ import UpdateProfile from "../pages/dashboard/UpdateProfile";
 import CartPage from "../pages/shop/CartPage";
 import ErrorPage from "../../public/error";
 import ProductDetail from "../components/ProductDetails";
+import DashboardLayout from "../layout/DashboardLayout";
+import Dashboard from "../pages/dashboard/admin/Dashboard";
+import Users from "../pages/dashboard/admin/Users";
+import Login from "../components/Login"
 
 const router = createBrowserRouter([
     {
@@ -45,6 +49,25 @@ const router = createBrowserRouter([
       path: "/signup",
       element: <Signup />,
     },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: 'dashboard',
+      element: <PrivateRouter><DashboardLayout/></PrivateRouter>,
+      children: [
+        {
+          path: '' ,
+          element:<Dashboard/>
+        },
+        {
+          path: 'users',
+          element: <Users/>
+        }
+      ]
+    }
+    
 ]);
 
 export default router;

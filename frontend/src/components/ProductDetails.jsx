@@ -14,17 +14,14 @@ const ProductDetail = () => {
   const location = useLocation();
 
   const handleNavigateToProducts = () => {
-    navigate("/products"); // Navigate to the products page
+    navigate("/products");
   };
 
   useEffect(() => {
     fetch(`http://localhost:678/menu/${id}`)
       .then((res) => res.json())
-      .then((data) => {
-        setProduct(data);
-      })
+      .then((data) => setProduct(data))
       .catch((error) => {
-        console.error("Error fetching product:", error);
         Swal.fire({
           icon: "error",
           title: "Error loading product",
@@ -44,8 +41,8 @@ const ProductDetail = () => {
         email: user.email,
       };
 
-
-      axios.post("http://localhost:678/carts", cartItem)
+      axios
+        .post("http://localhost:678/carts", cartItem)
         .then(() => {
           refetch();
           Swal.fire({
@@ -90,35 +87,36 @@ const ProductDetail = () => {
             <div className="flex flex-col lg:flex-row gap-12">
               <div className="w-full lg:w-1/2">
                 <div
-                  className="relative aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-grey" // maintains aspect ratio
+                  className="relative aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-grey"
                 >
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover object-center" // fills the container while maintaining the aspect ratio
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
               </div>
               <div className="flex flex-col justify-center text-center lg:text-left w-full lg:w-1/2">
-              <h2 className="text-3xl font-bold mb-4 flex items-center">
-                {product.name}
-                <button 
-                  onClick={handleNavigateToProducts} // Event listener for navigation
-                  className="btn bg-green text-white ml-4"
-                >
-                  Add more
-                </button>
-              </h2>
+                <h2 className="text-3xl font-bold mb-4 flex items-center">
+                  {product.name}
+                  <button
+                    onClick={handleNavigateToProducts}
+                    className="btn bg-green text-white ml-4"
+                  >
+                    Add More
+                  </button>
+                </h2>
 
                 <p className="text-lg mb-4">{product.description}</p>
-                <p className="font-bold text-xl text-red mb-6">Price : NPR {product.price}</p>
+                <p className="font-bold text-xl text-red mb-6">
+                  Price: NPR {product.price}
+                </p>
                 <button
                   onClick={handleAddToCart}
                   className="btn bg-green text-white"
                 >
                   Add to Cart
                 </button>
-                
               </div>
             </div>
           ) : (

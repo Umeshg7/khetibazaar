@@ -3,8 +3,9 @@ const Carts = require('../models/Carts');
 const routes = express.Router();
 
 const cartController = require('../controllers/cartControllers')
+const verifyToken = require('../middleware/verifyToken')
 
-routes.get('/', cartController.getCartByEmail)
+routes.get('/', verifyToken, cartController.getCartByEmail)
 routes.post('/', cartController.addToCart);
 routes.delete('/:id', cartController.deleteCart)
 routes.put('/:id', cartController.updateCart)

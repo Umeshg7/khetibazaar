@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'; // Essential React hooks and functions
 import logo from '/images/logo2.png'; // Our logo
 import Modal from './Model';
-import { AuthContext } from '../contexts/AuthProvider'; // Context for authentication
 import Profile from './Profile'; // User profile component
 import { FaRegUser } from 'react-icons/fa'; // Icon library
 import { Link, useNavigate } from 'react-router-dom'; // React router for navigation
 import useCart from "../hooks/useCart"; // Custom hook to manage cart state
 import Swal from 'sweetalert2'; // Library for alert messages
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // React Query for data-fetching
+import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
   const [isSticky, setSticky] = useState(false); // State for sticky navbar
-  const { user } = useContext(AuthContext); // Get user from AuthContext
+  const { user, loading} = useAuth(); // Get user from AuthContext
   const [cart, refetch] = useCart(); // Get cart items and refetch function
   const navigate = useNavigate(); // To navigate programmatically
 
