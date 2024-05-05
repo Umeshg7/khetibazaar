@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
-      <div className="py-24 flex flex-col md:flex-row-reverse items-center justify-between gap-4 md:gap-8">
+      <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-4 md:gap-8 mt-20">
 
         {/* img */}
         <div className="md:w-1/2">

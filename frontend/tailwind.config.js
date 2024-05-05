@@ -9,9 +9,9 @@ export default {
 
         colors : {
 
-          "green" : "#71C247",
+          "green" : "#38b000",
           "red" : "#FF6868",
-          "grey" : "#F3F4F6",
+          "grey" : "#6E717A",
           "cream" : "#FFF7F1",
           "brown" : "#4A141B",
           "secondary" : "#555",

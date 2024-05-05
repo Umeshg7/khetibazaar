@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Importing Link for navigation
 
 const categoryItems = [
-    { id: 1, title: "Fresh Potato", description: "( Versatile ingredients for any dish )", image: "/images/potato.png", link: "/products/642c155b2c4774f05c36ee017" },
-    { id: 2, title: "Fresh Tomatoes", description: "( Fresh, Vibrant and Nutritious )", image: "/images/tomatoo.png", link: "/products/642c155b2c4774f05c36ee0100" },
-    { id: 3, title: "Fresh Meat", description: "( Fresh Meat from our farm. )", image: "/images/meat.png", link: "/products/642c155b2c4774f05c36ee013" },
-    { id: 4, title: "Browse All", description: "(367 Items)", image: "/images/mix.png", link: "/products" },
+    { id: 1, title: "Fresh Potato", image: "/images/potato.png", link: "/products/642c155b2c4774f05c36ee017" },
+    { id: 2, title: "Fresh Tomatoes", image: "/images/tomatoo.png", link: "/products/642c155b2c4774f05c36ee0100" },
+    { id: 3, title: "Fresh Meat",  image: "/images/meat.png", link: "/products/642c155b2c4774f05c36ee013" },
+    { id: 4, title: "Browse All", image: "/images/mix.png", link: "/products" },
 ];
 
 const Categories = () => {
     return (
-        <div className='section-container py-16'>
+        <div className='section-container py-10'>
             <div className='text-center'>
                 <p className='subtitle'>Customer Favorites</p>
                 <h2 className='title'>Popular Categories</h2>
@@ -26,7 +26,6 @@ const Categories = () => {
                             </div>
                             <div className='mt-5 space-y-1'>
                                 <h3 style={{ fontWeight: 'bold' }}>{item.title}</h3>
-                                <p>{item.description}</p>
                             </div>
                         </div>
                     </Link>
