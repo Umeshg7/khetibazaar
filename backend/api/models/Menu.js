@@ -9,11 +9,14 @@ const menuSchema = new Schema({
         required: true,
         minlength: 3
     },
-    _id: String,
     description: String,
     image: String, 
     category: String,
     price: Number,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 
 })
 

@@ -3,7 +3,6 @@ import React from "react";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-
 const Users = () => {
   const axiosSecure = useAxiosSecure()
   const { refetch, data: users = [] } = useQuery({

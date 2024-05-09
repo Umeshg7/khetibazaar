@@ -95,9 +95,6 @@ const Navbar = () => {
         </details>
       </li>
       <li>
-      <Link to="/error" className="text-lg">Offers</Link>
-      </li>
-      <li>
       <Link to="/aboutus" className="text-lg">About us</Link>
       </li>
     </>

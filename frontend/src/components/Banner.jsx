@@ -11,7 +11,7 @@ const Banner = () => {
             <img src="/images/home.jpg" alt="" />
             <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
               <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3">
-                <Link to="/products/642c155b2c4774f05c36ee75" className="flex items-center gap-3">
+                <Link to="/products/642" className="flex items-center gap-3">
                   {/* Image and text within the Link */}
                   <img
                     src="/images/apple.png"
