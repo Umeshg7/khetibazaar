@@ -24,7 +24,7 @@ const postMenuItem = async(req, res) => {
 // delete a menu item
 const deleteMenuItem = async(req, res) => {
     const menuId = req.params.id;
-    // console.log(menuId)
+     console.log(menuId)
     try {
         const deletedItem = await Menu.findByIdAndDelete(menuId);
 
@@ -52,14 +52,13 @@ const singleMenuItem = async (req, res) => {
     }
 };
 
-
 // update single menu item
 const updateMenuItem = async (req, res) => {
     const menuId = req.params.id;
-    const { name, description, image, category, price} = req.body;
+    const { name, recipe, image, category, price} = req.body;
     try {
         const updatedMenu = await Menu.findByIdAndUpdate(menuId, 
-            { name, description, image, category, price}, 
+            { name, recipe, image, category, price}, 
             {new: true, runValidator: true}
             );
 
