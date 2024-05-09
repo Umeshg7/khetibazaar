@@ -12,6 +12,7 @@ const CheckoutForm = ({price, cart}) => {
         if (!stripe || !elements) {
             // Stripe.js has not loaded yet. Make sure to disable
             // form submission until Stripe.js has loaded.
+
             return;
           }
 
@@ -25,7 +26,7 @@ const CheckoutForm = ({price, cart}) => {
             type: 'card',
             card,
           });
-      
+            //return error for handling the issues
           if (error) {
             console.log('[error]', error);
             setCardError(error.message)
