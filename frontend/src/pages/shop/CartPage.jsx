@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 import { FaTrash } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 import axios from "axios";
-import KhaltiPaymentButton from "../../components/KhaltiPaymentButton";
 
 const CartPage = () => {
   const { user } = useContext(AuthContext);
@@ -233,17 +232,13 @@ const CartPage = () => {
               Total Price:{" "}
               <span id="total-price">{orderTotal.toFixed(2)}</span>
             </p>
-            <div>
-      {/* Cart content */}
-      <KhaltiPaymentButton amount={cartSubtotal} onSuccess={handlePaymentSuccess} /> {/* Pass the required props */}
-    </div>
+            <Link to='/process-checkout'>
+            <button className="btn btn-md bg-green text-white px-8 py-1 mt-10">
+              Procceed Checkout
+            </button></Link>
           </div>
         </div>
       </div> : <div className="text-center mt-20">
-      <div>
-      {/* Cart content */}
-      <KhaltiPaymentButton amount={cartSubtotal} onSuccess={handlePaymentSuccess} /> {/* Pass the required props */}
-    </div>
         <Link to="/products"><button className="btn bg-green text-white mt-3">Back to Menu</button></Link>
       </div>
       }
