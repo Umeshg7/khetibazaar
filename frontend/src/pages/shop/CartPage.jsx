@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { FaTrash } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 import axios from "axios";
+import KhaltiPaymentButton from "../../components/KhaltiPaymentButton";
 
 const CartPage = () => {
   const { user } = useContext(AuthContext);
@@ -12,7 +13,6 @@ const CartPage = () => {
   console.log(cart)
   const [cartItems, setCartItems] = useState([]);
   // console.log(cartItems)
-
   // Calculate the total price for each item in the cart
   const calculateTotalPrice = (item) => {
     return item.price * item.quantity;
@@ -47,6 +47,14 @@ const CartPage = () => {
       console.error("Error updating quantity:", error);
     }
   };
+
+    // Function to handle successful payment
+    const handlePaymentSuccess = (payload) => {
+      console.log('Payment successful:', payload);
+  
+      // Perform additional actions on success, like updating cart or notifying backend
+    };
+
   // Handle quantity decrease
   const handleDecrease = async (item) => {
     if (item.quantity > 1) {
@@ -166,7 +174,7 @@ const CartPage = () => {
                     <td className="font-medium">{item.name}</td>
                     <td>
                       <button
-                        className="btn btn-xs"
+                        className="btn btn-xs hover:bg-green"
                         onClick={() => handleDecrease(item)}
                       >
                         -
@@ -178,7 +186,7 @@ const CartPage = () => {
                         className="w-10 mx-2 text-center overflow-hidden appearance-none"
                       />
                       <button
-                        className="btn btn-xs"
+                        className="btn btn-xs hover:bg-green"
                         onClick={() => handleIncrease(item)}
                       >
                         +
@@ -187,7 +195,7 @@ const CartPage = () => {
                     <td>{calculateTotalPrice(item).toFixed(2)}</td>
                     <td>
                       <button
-                        className="btn btn-sm border-none text-red bg-transparent"
+                        className="btn btn-sm border-none text-red bg-transparent "
                         onClick={() => handleDelete(item)}
                       >
                         <FaTrash />
@@ -225,13 +233,17 @@ const CartPage = () => {
               Total Price:{" "}
               <span id="total-price">{orderTotal.toFixed(2)}</span>
             </p>
-            <button className="btn btn-md bg-green text-white px-8 py-1">
-              Procceed to Checkout
-            </button>
+            <div>
+      {/* Cart content */}
+      <KhaltiPaymentButton amount={cartSubtotal} onSuccess={handlePaymentSuccess} /> {/* Pass the required props */}
+    </div>
           </div>
         </div>
       </div> : <div className="text-center mt-20">
-        <p>Cart is empty. Please add products.</p>
+      <div>
+      {/* Cart content */}
+      <KhaltiPaymentButton amount={cartSubtotal} onSuccess={handlePaymentSuccess} /> {/* Pass the required props */}
+    </div>
         <Link to="/products"><button className="btn bg-green text-white mt-3">Back to Menu</button></Link>
       </div>
       }

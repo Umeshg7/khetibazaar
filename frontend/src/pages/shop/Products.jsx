@@ -87,19 +87,9 @@ const Products = () => {
         <div className="py-20 flex flex-col items-center justify-center">
           {/* content */}
           <div className=" text-center px-40 space-y-7">
-            <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
+            <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug mt-10">
                Explore the freshest local <span className="text-green">products</span>
             </h2>
-            <p className="text-[#4A4A4A] text-xl md:w-4/5 mx-auto">
-                  Join us on the farm-to-table journey,
-                  Savor the flavors, fresh and savory.
-                  From fields to plate, with love we serve,
-                  Experience the bounty, with every curve.
-
-            </p>
-            <button className="bg-green font-semibold btn text-white px-8 py-3 rounded-full">
-              Order Now
-            </button>
           </div>
         </div>
       </div>

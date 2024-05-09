@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const port = process.env.PORT || 678;
 const mongoose = require("mongoose");
+const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
 // middleware
@@ -20,18 +21,34 @@ mongoose
   )
   .catch((error) => console.log("Error connecting to MongoDB", error));
 
-
-
+  // jwt authentication
+  app.post('/jwt', async(req, res) => {
+    const user = req.body;
+    const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+      expiresIn: '1hr'
+    })
+    res.send({token});
+  })
 
 //   import routes here
 const menuRoutes = require('./api/routes/menuRoutes');
 const cartRoutes = require('./api/routes/cartRoutes');
-app.use('/menu', menuRoutes)
+const userRoutes = require('./api/routes/userRoutes');
+
+//   routes
+app.use('/menu', menuRoutes),
 app.use('/carts', cartRoutes);
+app.use('/users',userRoutes)
 
 app.get("/", (req, res) => {
-  res.send("Hello Foodi Client Server!");
+  res.send("Hello React Developers!");
 });
+
+const crypto = require('crypto'); // Ensure you import 'crypto'
+
+const randomHex = crypto.randomBytes(64).toString('hex'); // Generate 64 bytes of random data and convert to hex
+console.log(randomHex); // Output the random hex string
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
