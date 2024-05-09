@@ -17,6 +17,7 @@ import ScrollToTop from '../components/ScrollToTop'; // Importing ScrollToTop
 import AddMenu from '../pages/dashboard/admin/AddMenu';
 import ManageItems from '../pages/dashboard/admin/ManageItems';
 import UpdateMenu from '../pages/dashboard/admin/UpdateMenu';
+import Payment from '../pages/menuPage/Payment';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: '/aboutus',
         element: <AboutUs />, // About Us page
+      },
+      {
+        path: '/process-checkout',
+        element: <Payment/>,
       },
     ],
   },

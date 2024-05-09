@@ -5,6 +5,8 @@ const port = process.env.PORT || 678;
 const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 
 // middleware
 app.use(cors());
@@ -39,6 +41,22 @@ const userRoutes = require('./api/routes/userRoutes');
 app.use('/menu', menuRoutes),
 app.use('/carts', cartRoutes);
 app.use('/users',userRoutes)
+
+
+//stripe 1:01:40
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: calculateOrderAmount(items),
+    currency: "usd",
+    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret,
+  });
 
 app.get("/", (req, res) => {
   res.send("Hello React Developers!");
