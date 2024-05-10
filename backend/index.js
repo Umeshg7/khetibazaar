@@ -36,27 +36,33 @@ mongoose
 const menuRoutes = require('./api/routes/menuRoutes');
 const cartRoutes = require('./api/routes/cartRoutes');
 const userRoutes = require('./api/routes/userRoutes');
+const paymentRoutes = require('./api/routes/paymentRoutes');
 
 //   routes
 app.use('/menu', menuRoutes),
 app.use('/carts', cartRoutes);
 app.use('/users',userRoutes)
+app.use('/payments',paymentRoutes )
 
 
-//stripe 1:01:40
+
+//stripe 
+app.post("/create-payment-intent", async (req, res) => {
+  const { price } = req.body;
+  const amount = price *100; 
+
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: calculateOrderAmount(items),
-    currency: "usd",
-    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    automatic_payment_methods: {
-      enabled: true,
-    },
+    amount: amount,
+    currency: "NPR",
+    "payment_method_types": ["card"],
+
   });
 
   res.send({
     clientSecret: paymentIntent.client_secret,
   });
+});
 
 app.get("/", (req, res) => {
   res.send("Hello React Developers!");
@@ -65,7 +71,7 @@ app.get("/", (req, res) => {
 const crypto = require('crypto'); // Ensure you import 'crypto'
 
 const randomHex = crypto.randomBytes(64).toString('hex'); // Generate 64 bytes of random data and convert to hex
-console.log(randomHex); // Output the random hex string
+//console.log(randomHex); // Output the random hex string
 
 
 app.listen(port, () => {

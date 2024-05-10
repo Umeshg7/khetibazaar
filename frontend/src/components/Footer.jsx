@@ -14,27 +14,22 @@ const Footer = () => {
         {/* Navigation section for useful links */}
         <nav>
           <header className="footer-title text-black">Useful links</header>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Events</a>
-          <a className="link link-hover">Blogs</a>
-          <a className="link link-hover">FAQ</a>
+          <a href="/aboutus"className="link link-hover">About us</a>
         </nav>
         {/* Navigation section for main menu links */}
         <nav>
           <header className="footer-title">Main Menu</header>
-          <a className="link link-hover">Home</a>
-          <a className="link link-hover">Offers</a>
-          <a className="link link-hover">Menus</a>
-          <a className="link link-hover">Reservation</a>
+          <a href="/" className="home">Home</a>
+          <a href="/products" className="link link-hover">Products</a>
         </nav>
         {/* Navigation section for contact information */}
         <nav>
-          <header className="footer-title">Contact Us</header>
-          <a className="link link-hover">khetibazaar@gmail.com</a>
-          <a className="link link-hover">+977 987654321</a>
-          <a className="link link-hover">facebook.com</a>
-          <a className="link link-hover">whatsapp</a>
-        </nav>
+  <header className="footer-title">Contact Us</header>
+  <a href="mailto:khetibazaar@gmail.com" className="link link-hover">khetibazaar@gmail.com</a>
+  <a href="https://www.facebook.com" className="link link-hover" target="_blank" rel="noopener noreferrer">Facebook</a>
+  <a href="https://wa.me/" className="link link-hover" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+</nav>
+
       </footer>
       {/* Divider to separate footer sections */}
       <hr />

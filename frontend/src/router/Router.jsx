@@ -18,6 +18,7 @@ import AddMenu from '../pages/dashboard/admin/AddMenu';
 import ManageItems from '../pages/dashboard/admin/ManageItems';
 import UpdateMenu from '../pages/dashboard/admin/UpdateMenu';
 import Payment from '../pages/menuPage/Payment';
+import Order from '../pages/dashboard/Order';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: '/process-checkout',
         element: <Payment/>,
+      },
+      {
+        path: '/order',
+        element: <Order/>,
       },
     ],
   },
