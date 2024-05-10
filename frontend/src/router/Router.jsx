@@ -19,6 +19,12 @@ import ManageItems from '../pages/dashboard/admin/ManageItems';
 import UpdateMenu from '../pages/dashboard/admin/UpdateMenu';
 import Payment from '../pages/menuPage/Payment';
 import Order from '../pages/dashboard/Order';
+import Vegetable from '../pages/shop/Vegetable';
+import Fruit from '../pages/shop/Fruit';
+import EggandMeat from '../pages/shop/EggandMeat';
+import Drink from '../pages/shop/Drink';
+import Grain from '../pages/shop/Grain';
+import Favorites from "../components/Favorites"
 
 const router = createBrowserRouter([
   {
@@ -29,6 +35,7 @@ const router = createBrowserRouter([
         <Main /> 
       </>
     ),
+    
     children: [
       {
         path: '/',
@@ -65,6 +72,30 @@ const router = createBrowserRouter([
       {
         path: '/order',
         element: <Order/>,
+      },
+      {
+        path: '/vegetables',
+        element: <Vegetable/>,
+      },
+      {
+        path: '/fruits',
+        element: <Fruit/>,
+      },
+      {
+        path: '/grains',
+        element: <Grain/>,
+      },
+      {
+        path: '/eggandmeat',
+        element: <EggandMeat/>,
+      },
+      {
+        path: '/drinks',
+        element: <Drink/>,
+      },
+      {
+        path: '/favorite',
+        element: <Favorites/>,
       },
     ],
   },
@@ -104,12 +135,14 @@ const router = createBrowserRouter([
         path: 'manage-items',
         element: <ManageItems/>,
       },
+      
       {
         path: 'update-menu/:id',
         element: <UpdateMenu/>,
         loader: ({params}) => fetch(`http://localhost:678/menu/${params.id}`)
       },
     ],
+    
   },
 ]);
 

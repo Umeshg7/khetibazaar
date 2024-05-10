@@ -42,6 +42,9 @@ const Profile = ({user}) => {
       <li>
         <a href= "/update-profile">Profile</a>
         </li>
+        <li>
+        <a href= "/favorite">Your Favourite</a>
+        </li>
       <li>
         <a href='/order'>Order</a>
         </li>
