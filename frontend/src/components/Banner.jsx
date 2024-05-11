@@ -11,31 +11,33 @@ const Banner = () => {
             <img src="/images/home.jpg" alt="" />
             <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
               <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3">
-                <Link to="/products/663ba8ef79e985d94e32e006" className="flex items-center gap-3">
+                <Link to="/products/" className="flex items-center gap-3">
                   {/* Image and text within the Link */}
                   <img
-                    src="/images/apple.png"
+                    src="/images/products/vegetables.png"
+                    alt="Vegetable"
+                    style={{ width: '90px', height: '60px', borderRadius: '50%' }}
+                  />
+                  <div className="space-y-1">
+                    <h5>Mix Vegetables</h5>
+                    <p className="text-red">NPR: 1200</p>
+                  </div>
+                </Link>
+              </div>
+              <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3">
+                <Link to="/products/663ba87179e985d94e32dff8" className="flex items-center gap-3">
+                  {/* Image and text within the Link */}
+                  <img
+                    src="/images/products/mix_fruit.png"
                     alt="Fresh Apple"
                     style={{ width: '90px', height: '60px', borderRadius: '50%' }}
                   />
                   <div className="space-y-1">
-                    <h5>Fresh Apple</h5>
-                    <p className="text-red">NPR: 270/kg</p>
+                    <h5>Mix Fruits</h5>
+                    <p className="text-red">NPR: 1400</p>
                   </div>
                 </Link>
               </div>
-            <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 hidden md:flex">
-              <Link to="/products/663bada379e985d94e32e083"
-                className="flex items-center gap-3" 
-                style={{ textDecoration: 'none' }} 
-              >
-                <img src="/images/grains.png" alt="Grains" className="rounded-full w-20 h-20" />
-                <div className="space-y-1">
-                  <h5>Refined Grains</h5>
-                  <p className="text-red">NPR: 150/kg</p>
-                </div>
-              </Link>
-            </div>
           </div>
         </div>
         

@@ -9,11 +9,11 @@ import {
 import { Link } from 'react-router-dom';
 
 const AboutUs = () => (
-  <div className="max-w-screen-2xl container mx-auto xl:px-24 bg-gradient-to-r from-[#FAFAFA] to-[#FCFCFC] to-100% pt-20 mt-10">
-        <section className="py-10 bg-green text-white">
-      <div className="mx-auto flex items-center justify-around">
+  <div className="bg-gradient-to-r from-[#FAFAFA] to-[#FCFCFC] pt-20 mt-10 px-4 lg:px-0">
+    <section className="py-10 bg-green text-white">
+      <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row items-center justify-around">
         {/* Products */}
-        <div className="flex items-center space-x-5">
+        <div className="flex items-center space-x-5 mb-8 md:mb-0">
           <FaBox className="text-4xl" />
           <div>
             <h3 className="text-3xl font-bold text-center">100+</h3>
@@ -22,7 +22,7 @@ const AboutUs = () => (
         </div>
 
         {/* Satisfied Clients */}
-        <div className="flex items-center space-x-5">
+        <div className="flex items-center space-x-5 mb-8 md:mb-0">
           <FaUsers className="text-4xl" />
           <div>
             <h3 className="text-3xl font-bold text-center">500+</h3>
@@ -31,7 +31,7 @@ const AboutUs = () => (
         </div>
 
         {/* Years of Experience */}
-        <div className="flex items-center space-x-5">
+        <div className="flex items-center space-x-5 mb-8 md:mb-0">
           <FaClock className="text-4xl" />
           <div>
             <h3 className="text-3xl font-bold text-center">5+</h3>
@@ -49,49 +49,45 @@ const AboutUs = () => (
         </div>
       </div>
     </section>
+
     {/* Flex container for arranging content */}
     <div className="py-10 flex flex-col md:flex-row-reverse items-center justify-between">
       {/* Image section */}
-      <div className="md:w-1/2">
-        <img src="/images/aboutus.png" alt="About Us" />
-        <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4" />
+      <div className="md:w-1/2 mb-8 md:mb-0">
+        <img src="/images/aboutus.png" alt="About Us" className="w-full" />
       </div>
 
       {/* Text section */}
       <div className="md:w-1/2 px-4 space-y-5 md:mt-10">
         {/* Heading */}
-        <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
+        <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug text-center">
           About <span className="text-green">Us</span>
         </h2>
         {/* Description */}
-        <p className="text-[#4A4A4A] text-xl">
+        <p className="text-[#4A4A4A] text-xl text-center">
           At Khetibazar, we are passionate about delivering the freshest local produce straight from our farms to your table. Join us on our farm-to-table journey as we celebrate the flavors of nature, carefully cultivating and delivering the finest vegetables, fruits, grains, and more. From seed to harvest, our commitment to quality and sustainability shines through in every bite.
         </p>
       </div>
     </div>
 
-
-    <div className="py-10 flex flex-col md:flex-row-reverse items-center justify-between gap-4 md:gap-8">
+    <div className="py-10 flex flex-col md:flex-row items-center justify-between">
       {/* Image section */}
       <div className="md:w-1/2 px-4 space-y-5 md:mt-10">
         {/* Heading */}
-        <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
+        <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug text-center">
         Freshness You Can Taste, Health <span className="text-green">You can trust</span>
         </h2>
         {/* Description */}
-        <p className="text-[#4A4A4A] text-xl">
+        <p className="text-[#4A4A4A] text-xl text-center">
           At Khetibazar, we are passionate about delivering the freshest local produce straight from our farms to your table. Join us on our farm-to-table journey as we celebrate the flavors of nature, carefully cultivating and delivering the finest vegetables, fruits, grains, and more. From seed to harvest, our commitment to quality and sustainability shines through in every bite.
         </p>
       </div>
 
       {/* Text section */}
-      <div className="md:w-1/2">
-        <img src="/images/aboutus1.png" alt="About Us" />
-        <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4" />
+      <div className="md:w-1/2 mb-8 md:mb-0">
+        <img src="/images/aboutus1.png" alt="About Us" className="w-full" />
       </div>
     </div>
-
-
 
     {/* Call to Action Section */}
     <section className="py-20 bg-gradient-to-r from-[#FAFAFA] to-[#FCFCFC] to-100%">
@@ -100,20 +96,18 @@ const AboutUs = () => (
         <p className="text-lg mb-8">
           Join us in discovering the joy of fresh, locally sourced produce. Explore our wide range of products and start your farm-to-table journey today.
         </p>
-        <Link to = "/products">
-        <button
-          className="bg-green text-white px-8 py-3 rounded-full hover:bg-green-700 transition-colors duration-300"
-        >
-          Discover Our Products
-        </button>
+        <Link to="/products">
+          <button className="bg-green text-white px-8 py-3 rounded-full hover:bg-green-700 transition-colors duration-300">
+            Discover Our Products
+          </button>
         </Link>
       </div>
     </section>
 
     {/* Customer Feedback Section */}
-    <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+    <div className="flex flex-col md:flex-row items-center justify-between">
       <div className="md:w-1/2">
-        <img src="/images/rating.png" alt="" style={{ marginLeft: '70px' }} />
+        <img src="/images/rating.png" alt="" className="mx-auto md:ml-0" />
       </div>
 
       <div className="md:w-1/2">
@@ -128,19 +122,19 @@ const AboutUs = () => (
             <div className="avatar-group -space-x-6 rtl:space-x-reverse">
               <div className="avatar">
                 <div className="w-12 cursor-pointer">
-                  <img src="/images/rating2.png" />
+                  <img src="/images/rating2.png" alt="rating" />
                 </div>
               </div>
 
               <div className="avatar">
                 <div className="w-12 cursor-pointer">
-                  <img src="/images/rating1.png" />
+                  <img src="/images/rating1.png" alt="rating" />
                 </div>
               </div>
 
               <div className="avatar">
                 <div className="w-12 cursor-pointer">
-                  <img src="/images/rating3.png" />
+                  <img src="/images/rating3.png" alt="rating" />
                 </div>
               </div>
             </div>

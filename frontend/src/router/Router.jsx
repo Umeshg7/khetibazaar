@@ -25,6 +25,7 @@ import EggandMeat from '../pages/shop/EggandMeat';
 import Drink from '../pages/shop/Drink';
 import Grain from '../pages/shop/Grain';
 import Favorites from "../components/Favorites"
+import AddChatMessage from '../pages/dashboard/admin/AddChatMessage';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
         path: '/products',
         element: <Products />, // Products listing
       },
+
       {
         path: '/products/:id',
         element: <ProductDetail />, // Product details with dynamic ID
@@ -130,6 +132,10 @@ const router = createBrowserRouter([
       {
         path: 'add-menu',
         element: <AddMenu/>,
+      },
+      {
+        path: 'add-message',
+        element: <AddChatMessage/>,
       },
       {
         path: 'manage-items',

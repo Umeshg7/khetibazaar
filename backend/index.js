@@ -1,3 +1,4 @@
+// index.js
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -6,8 +7,16 @@ const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const crypto = require('crypto'); // Import 'crypto' to generate random strings
+const crypto = require('crypto');
+const ChatRoutes = require("./api/routes/chatRoutes"); // Import chat routes
 
+// Import routes
+const menuRoutes = require('./api/routes/menuRoutes');
+const cartRoutes = require('./api/routes/cartRoutes');
+const userRoutes = require('./api/routes/userRoutes');
+const paymentRoutes = require('./api/routes/paymentRoutes');
+const favoriteRoutes = require("./api/routes/favoriteRoutes"); // Ensure import is correct
+const searchRoutes = require('./api/routes/searchRoutes');
 // middleware
 app.use(cors());
 app.use(express.json());
@@ -29,23 +38,14 @@ app.post('/jwt', async (req, res) => {
   res.send({ token });
 });
 
-// Import routes
-const menuRoutes = require('./api/routes/menuRoutes');
-const cartRoutes = require('./api/routes/cartRoutes');
-const userRoutes = require('./api/routes/userRoutes');
-const paymentRoutes = require('./api/routes/paymentRoutes');
-const favoriteRoutes = require("./api/routes/favoriteRoutes"); // Ensure import is correct
-const searchRoutes = require('./api/routes/searchRoutes'); // Ensure the correct import
-
-
-
 // Register routes
 app.use('/menu', menuRoutes);
 app.use('/carts', cartRoutes);
 app.use('/users', userRoutes);
 app.use('/payments', paymentRoutes);
-app.use("/favorites", favoriteRoutes); // Check the registered endpoint
-app.use('/search', searchRoutes); // Register the new route
+app.use("/favorites", favoriteRoutes);
+app.use('/search', searchRoutes);
+app.use('/chat', ChatRoutes); // Use chat routes
 
 // Stripe payment endpoint
 app.post("/create-payment-intent", async (req, res) => {
@@ -68,9 +68,7 @@ app.get("/", (req, res) => {
   res.send("Hello React Developers!");
 });
 
-const randomHex = crypto.randomBytes(64).toString('hex'); // Generate 64 bytes of random data
-// console.log(randomHex); // Output the random hex string
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+

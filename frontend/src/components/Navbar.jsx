@@ -1,56 +1,53 @@
-import React, { useState,useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
-import { Link, useNavigate } from 'react-router-dom'; // React router for navigation
+import { Link, useNavigate } from 'react-router-dom';
 import { FaRegUser } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
-import useCart from '../hooks/useCart'; // Custom hook to manage cart state
+import useCart from '../hooks/useCart';
 import Modal from './Model';
-import Profile from './Profile'; // User profile component
-import logo from '/images/logo2.png'; // Our logo
+import Profile from './Profile';
+import logo from '/images/logo2.png';
 
 const Navbar = () => {
-  const [isSticky, setSticky] = useState(false); // State for sticky navbar
+  const [isSticky, setSticky] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-  const { user } = useAuth(); // Get user from AuthContext
-  const [cart] = useCart(); // Get cart items
-  const navigate = useNavigate(); // To navigate programmatically
-  const [activeDropdown, setActiveDropdown] = useState(null); // State for active dropdown
-  const dropdownRefs = {
-    products: useRef(null),
-    services: useRef(null),
-  };
+  const { user } = useAuth();
+  const [cart] = useCart();
+  const navigate = useNavigate();
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const navbarRef = useRef(null); 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleDropdown = (dropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
   };
 
-  const handleClickOutside = (e) => {
-    if (
-      activeDropdown &&
-      dropdownRefs[activeDropdown] &&
-      !dropdownRefs[activeDropdown].current.contains(e.target)
-    ) {
+  const handleClickOutside = (event) => {
+    if (navbarRef.current && !navbarRef.current.contains(event.target)) {
       setActiveDropdown(null);
     }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      setSticky(offset > 0); // If scrolled down, make navbar sticky
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
-  },); // Re-run effect when `activeDropdown` changes
+  }, []);
 
-  // Debounced search function to avoid too many API requests
   const debouncedSearch = debounce(async (query) => {
     if (query.length > 1) {
       try {
@@ -62,7 +59,7 @@ const Navbar = () => {
     } else {
       setSuggestions([]);
     }
-  }, 3);
+  }, 300); 
 
   const handleSearchChange = (e) => {
     const query = e.target.value;
@@ -72,8 +69,8 @@ const Navbar = () => {
 
   const handleSelectSuggestion = (suggestion) => {
     setSearchQuery(suggestion.name);
-    navigate(`/products/${suggestion._id}`); // Navigate to product detail page
-    setSuggestions([]); // Clear suggestions
+    navigate(`/products/${suggestion._id}`);
+    setSuggestions([]);
   };
 
   const handleCartClick = () => {
@@ -102,7 +99,7 @@ const Navbar = () => {
           Home
         </Link>
       </li>
-      <li tabIndex={0} ref={dropdownRefs}>
+      <li tabIndex={0}>
         <div onClick={() => toggleDropdown('products')}>
           <span className="text-lg cursor-pointer">My products</span>
           <span>{activeDropdown === 'products' ? '▲' : '▼'}</span>
@@ -130,7 +127,7 @@ const Navbar = () => {
           </ul>
         )}
       </li>
-      <li tabIndex={0} ref={dropdownRefs}>
+      <li tabIndex={0}>
         <div onClick={() => toggleDropdown('services')}>
           <span className="text-lg cursor-pointer">Our Services</span>
           <span>{activeDropdown === 'services' ? '▲' : '▼'}</span>
@@ -157,45 +154,41 @@ const Navbar = () => {
     </>
   );
 
-
-
   return (
-    <header className="max-w-screen-2x1 container mx-auto fixed top-0 right-0 transition-all duration-300 ease-in-out">
-      <div className={`navbar px-4 ${isSticky ? 'shadow-md bg-base-100 transition-all duration-300 ease-in-out' : ''}`}>
-        <div className="navbar-start" style={{ paddingLeft: '30px' }}>
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+    <header className={`max-w-screen-2x1 container mx-auto fixed top-0 right-0 transition-all duration-300 ease-in-out ${isSticky ? 'bg-white shadow-md' : ''}`}>
+      <div ref={navbarRef} className="navbar px-4">
+      <div className="navbar-start lg:flex lg:items-center" style={{ paddingLeft: '80px' }}>
+          <a href='/'>
+            <img src={logo} alt='logo' style={{ width: 'auto', height: '60px' }} />
+          </a>
+          <div className="dropdown lg:hidden ml-auto">
+            <button tabIndex={0} className="btn btn-ghost" onClick={() => toggleDropdown('menu')}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
-            </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-48">
-              {navItems}
-            </ul>
-          </div>
-          <a href='/'>
-            <img src={logo} alt='logo' style={{ width: '300px', height: '90px' }} />
-          </a>
+            </button>
+            {activeDropdown === 'menu' && (
+              <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-48">
+                {navItems}
+              </ul>
+            )}
+        </div> 
         </div>
 
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center lg:flex lg:items-center hidden">
           <ul className="menu menu-horizontal px-1">
             {navItems}
           </ul>
         </div>
-
-        <div className="navbar-end " style={{ paddingRight: '40px' }}>
-          {/* Search input and suggestions */}
+        <div className="navbar-end lg:flex lg:items-center hidden" style={{ paddingRight: '40px' }}>
           <div className="relative">
             <input
               type="text"
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search for products..."
-              className="input input-bordered w-40 md:w-auto"
+              className="input input-bordered border border-green w-40 md:w-auto"
             />
-
-            {/* Dropdown suggestions */}
             {suggestions.length > 0 && (
               <div className="absolute top-10 bg-white border border-gray-300 rounded shadow-lg w-full">
                 {suggestions.map((suggestion) => (
@@ -210,9 +203,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
-
-          {/* Cart button */}
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-4 lg:flex hidden items-center justify_center" onClick={handleCartClick}>
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-4 lg:flex items-center justify_center ml-7  mr-7" onClick={handleCartClick}>
             <div className="indicator">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 a2 2 0 014 0z" />
@@ -220,10 +211,8 @@ const Navbar = () => {
               <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
             </div>
           </div>
-
-          {/* login button */}
           {user ? (
-            <Profile user={user} />
+            <Profile user={user} /> 
           ) : (
             <button
               onClick={() => document.getElementById("my_modal_5").showModal()}
@@ -232,7 +221,6 @@ const Navbar = () => {
               <FaRegUser /> Login
             </button>
           )}
-
           <Modal />
         </div>
       </div>
