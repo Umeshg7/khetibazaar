@@ -71,7 +71,7 @@ const Products = () => {
     setCurrentPage(1);
   };
 
-//   console.log(filteredItems);
+  console.log(filteredItems);
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -84,24 +84,28 @@ const Products = () => {
     <div>
       {/* menu banner */}
       <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
-        <div className="py-20 flex flex-col items-center justify-center">
+        <div className="py-5 flex flex-col items-center justify-center mt-10">
           {/* content */}
           <div className=" text-center px-40 space-y-7">
-            <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
+            <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug mt-10">
                Explore the freshest local <span className="text-green">products</span>
             </h2>
-            <p className="text-[#4A4A4A] text-xl md:w-4/5 mx-auto">
-                  Join us on the farm-to-table journey,
-                  Savor the flavors, fresh and savory.
-                  From fields to plate, with love we serve,
-                  Experience the bounty, with every curve.
-
-            </p>
-            <button className="bg-green font-semibold btn text-white px-8 py-3 rounded-full">
-              Order Now
-            </button>
           </div>
         </div>
+      </div>
+
+             <div className="flex justify-center my-3 mb-10">
+        {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }).map((_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => paginate(index + 1)}
+            className={`mx-1 px-3 py-1 rounded-full ${
+              currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
 
       {/* menu shop  */}
@@ -183,19 +187,7 @@ const Products = () => {
       </div>
 
        {/* Pagination */}
-       <div className="flex justify-center my-8">
-        {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }).map((_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => paginate(index + 1)}
-            className={`mx-1 px-3 py-1 rounded-full ${
-              currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"
-            }`}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+
     </div>
   );
 };

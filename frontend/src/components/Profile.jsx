@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthProvider'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
 const Profile = ({user}) => {
@@ -42,9 +42,6 @@ const Profile = ({user}) => {
       <li><a href= "/update-profile">Profile</a></li>
       <li><a>Order</a></li>
       <li><a>Setting</a></li>
-      <li>
-        <Link to= "/dashboard">Dashboard</Link>
-        </li>
       <li><a onClick={handleLogout}>Logout</a></li>
     </ul>
   </div>

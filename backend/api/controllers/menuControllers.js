@@ -24,7 +24,7 @@ const postMenuItem = async(req, res) => {
 // delete a menu item
 const deleteMenuItem = async(req, res) => {
     const menuId = req.params.id;
-    // console.log(menuId)
+     console.log(menuId)
     try {
         const deletedItem = await Menu.findByIdAndDelete(menuId);
 

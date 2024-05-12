@@ -1,60 +1,85 @@
-import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
-import { MdDashboard, MdPerson, MdAddCircle, MdEvent, MdShoppingCart } from 'react-icons/md';
-import { MdDashboardCustomize } from "react-icons/md";
-import { FaLocationArrow, FaQuestion, FaUser } from "react-icons/fa";
-import { IoHome } from "react-icons/io5";
-import { FaCartArrowDown } from "react-icons/fa6";
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
+import { MdDashboard, MdDashboardCustomize } from "react-icons/md";
+import { IoIosChatboxes } from "react-icons/io";
+import Login from "../components/Login";
+import {
+  FaEdit,
+  FaLocationArrow,
+  FaPlusCircle,
+  FaQuestionCircle,
+  FaRegUser,
+  FaShoppingBag,
+  FaUser,
+} from "react-icons/fa";
 
-const sharedLinks=(
+import logo from "/images/logoadmin.png";
+import { FaCartShopping } from "react-icons/fa6";
+import useAdmin from "../hooks/useAdmin";
+import useAuth from "../hooks/useAuth";
+
+// Shared Links
+const sharedLinks = (
   <>
-              <li>
-              <Link to="/">
-              <IoHome />Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/products"><FaCartArrowDown />Products</Link>
-            </li>
-            <li>
-              <Link to="/products"><FaLocationArrow/>Orders Tracking</Link>
-            </li>
-            <li>
-              <Link to="/products"><FaQuestion/>Customer Support</Link>
-            </li>
+    <li className="mt-3">
+      <Link to="/">
+        <MdDashboard /> Home
+      </Link>
+    </li>
+    <li>
+      <Link to="/menu">
+        <FaCartShopping /> Menu
+      </Link>
+    </li>
+    <li>
+      <Link to="/order-tracking">
+        <FaLocationArrow /> Orders Tracking
+      </Link>
+    </li>
+    <li>
+      <Link to="/support">
+        <FaQuestionCircle /> Customer Support
+      </Link>
+    </li>
   </>
-)
-
+);
 
 const DashboardLayout = () => {
+  const {loading} = useAuth()
+  const [isAdmin, isAdminLoading] = useAdmin()
   return (
     <div>
-      <div className="drawer sm:drawer-open">
+      {
+        isAdmin ?         <div className="drawer sm:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col sm:items-start sm:justify-start my-2">
           {/* Page content here */}
           <div className="flex items-center justify-between mx-4">
-          <label htmlFor="my-drawer-2" 
-          className="btn btn-primary drawer-button lg:hidden">
-           <MdDashboardCustomize />
-          </label>
-          <button className="btn rounded-full px-6 bg-grey flex items-center gap-2 text-black sm:hidden">
-            <FaUser />Logout</button>
+            <label
+              htmlFor="my-drawer-2"
+              className="btn btn-primary drawer-button lg:hidden"
+            >
+              <MdDashboardCustomize />
+            </label>
+            <button className="btn rounded-full px-6 bg-green flex items-center gap-2 text-white sm:hidden">
+              <FaRegUser /> Logout
+            </button>
           </div>
-          <div className="mt-5, md:mt-2 mx-4">
-
-          <Outlet />
-
+          <div className="mt-5 md:mt-2 mx-4">
+            <Outlet /> {/* The main content based on routing */}
           </div>
         </div>
         <div className="drawer-side">
-          <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
+          <label
+            htmlFor="my-drawer-2"
+            aria-label="close sidebar"
+            className="drawer-overlay"
+          />
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             <li>
               <Link to="/dashboard" className="flex justify-start mb-3">
-                <img src="/logo2.png" alt="Logo" className= "w-20"/>
-                <span className="badge badge-primary">Admin</span>
+                <img src={logo} alt="" className="w-50" />
               </Link>
             </li>
             <hr />
@@ -64,34 +89,41 @@ const DashboardLayout = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/users">
-                <MdAddCircle /> Add Products
+              <Link to="/dashboard">
+                <FaShoppingBag /> Manage Bookings
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/bookings">
-                <MdEvent /> Manage Bookings
+              <Link to="/dashboard/add-menu">
+                <FaPlusCircle />
+                Add Menu
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/orders">
-                <MdShoppingCart /> Manage Orders
+              <Link to="/dashboard/manage-items">
+                <FaEdit /> Manage Items
               </Link>
             </li>
+
+            <li>
+              <Link to="/dashboard/add-message">
+              <IoIosChatboxes />
+ Add Chat-box Message
+              </Link>
+            </li>
+
             <li className="mb-3">
               <Link to="/dashboard/users">
-                <MdPerson /> All Users
+                <FaUser /> All Users
               </Link>
             </li>
-            {/* shared nav links */}
-            {
-              sharedLinks
-            }
-
-
+            <hr />
+            {/* Shared nav links */}
+            {sharedLinks}
           </ul>
         </div>
-      </div>
+      </div> : <Login/>
+      }
     </div>
   );
 };

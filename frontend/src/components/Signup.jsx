@@ -1,130 +1,157 @@
 import React, { useContext } from "react";
-import { FcGoogle } from "react-icons/fc"; // Importing Google icon from react-icons library
-import { Link, useLocation, useNavigate } from "react-router-dom"; // Importing necessary modules from react-router-dom library
-import { useForm } from "react-hook-form"; // Importing useForm hook from react-hook-form library
-import Modal from "./Model"; // Importing the Modal component
-import { AuthContext } from "../contexts/AuthProvider"; // Importing AuthContext from custom context provider
-import axios from 'axios';
-// Defining the Signup component
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaFacebookF, FaGithub, FaGoogle, FaRegUser } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../contexts/AuthProvider";
+import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+
 const Signup = () => {
-    // Destructuring properties from useForm hook
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+  const { signUpWithGmail, createUser, updateUserProfile } =
+    useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
 
-    // Destructuring createUser and login functions from AuthContext
-    const {createUser, login, updateUserProfile} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    // Getting current location and navigation function from react-router-dom
-    const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from?.pathname || "/"; // Defining default path or path from which navigation occurred
+  const from = location.state?.from?.pathname || "/";
 
-    // Function to handle form submission
-    const onSubmit = (data) => {
-        const email = data.email;
-        const password = data.password;
-        // Creating user with provided email and password
-        createUser(email, password).then((result) => {
-            // Signed up successfully
-            //changes 
-            const user = result.user;
-            updateUserProfile(data.email, data.photoURL).then(() => {
-                const userInfo = {
-                    name:data.name,
-                    email:data.email,
-                }
-                axios.post('http://localhost:5174/users',userInfo) 
-                  .then( (response) => {
-                    //console.log(response);
-                })
-                alert("Account creation successfully done!");
-                document.getElementById("my_modal_5").close(); // Closing the modal after successful signup
-                navigate(from, {replace: true}); // Navigating to previous page or default page
-                  })
-            })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // Handle error
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    // console.log(email, password)
+    createUser(email, password)
+      .then((result) => {
+        // Signed up
+        const user = result.user;
+        updateUserProfile(data.email, data.photoURL).then(() => {
+          const userInfor = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfor)
+            .then((response) => {
+              // console.log(response);
+              alert("Signin successful!");
+              navigate(from, { replace: true });
+            });
         });
-    };
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
 
-    // Rendering the Signup component
-    return (
-        <div className="max-w-md bg-white shadow w-full mx-auto flex items-center justify-center my-20">
-            <div className="modal-action flex flex-col justify-center mt-0">
-                <form onSubmit={handleSubmit(onSubmit)} className="card-body" method="dialog">
-                    <h3 className="font-bold text-lg">Create A Account!</h3>
+  // login with google
+  const handleRegister = () => {
+    signUpWithGmail()
+      .then((result) => {
+        const user = result.user;
+        const userInfor = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+        };
+        axiosPublic
+          .post("/users", userInfor)
+          .then((response) => {
+            // console.log(response);
+            alert("Signin successful!");
+            navigate("/");
+          });
+      })
+      .catch((error) => console.log(error));
+  };
+  return (
+    <div className="max-w-md bg-white shadow w-full mx-auto flex items-center justify-center my-20">
+      <div className="mb-5">
+        <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+          <h3 className="font-bold text-lg">Please Create An Account!</h3>
+          {/* name */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              type="name"
+              placeholder="Your name"
+              className="input input-bordered"
+              {...register("name")}
+            />
+          </div>
 
-                    {/* Email input field */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="email"
-                            className="input input-bordered"
-                            {...register("email")} // Registering email input with react-hook-form
-                        />
-                    </div>
+          {/* email */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              placeholder="email"
+              className="input input-bordered"
+              {...register("email")}
+            />
+          </div>
 
-                    {/* Password input field */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Password</span>
-                        </label>
-                        <input
-                            type="password"
-                            placeholder="password"
-                            className="input input-bordered"
-                            {...register("password")} // Registering password input with react-hook-form
-                        />
-                        <label className="label mt-1">
-                            <a href="#" className="label-text-alt link link-hover">
-                                Forgot password?
-                            </a>
-                        </label>
-                    </div>
+          {/* password */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              type="password"
+              placeholder="password"
+              className="input input-bordered"
+              {...register("password")}
+            />
+            <label className="label">
+              <a href="#" className="label-text-alt link link-hover mt-2">
+                Forgot password?
+              </a>
+            </label>
+          </div>
 
-                    {/* Signup button */}
-                    <div className="form-control mt-6">
-                        <input
-                            type="submit"
-                            value="Signup"
-                            className="btn bg-green text-white"
-                        />
-                    </div>
+          {/* error message */}
+          <p>{errors.message}</p>
 
-                    {/* Link to login page */}
-                    <p className="text-center my-2">
-                        Have an account?{" "}
-                        <button className="underline text-red ml-1" onClick={() => document.getElementById("my_modal_5").showModal()}>
-                            Login
-                        </button>{" "}
-                    </p>
+          {/* submit btn */}
+          <div className="form-control mt-6">
+            <input
+              type="submit"
+              className="btn bg-green text-white"
+              value="Sign up"
+            />
+          </div>
+          <Link to="/">
+            <div
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
+              ✕
+            </div></Link>
 
-                    {/* Close button */}
-                    <Link to="/" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</Link>
-                </form>
+          <div className="text-center my-2">
+            Have an account?
+            <Link to="/login">
+              <button className="ml-2 underline">Login here</button>
+            </Link>
+          </div>
+        </form>
+        <div className="text-center space-x-3">
+        <button onClick={handleRegister} className="btn  hover:bg-grey hover:text-white" style={{ width: '400px' }}>
+              <FaGoogle /> Login with Google
+        </button>
 
-                {/* Social sign in button */}
-                <div className="text-center space-x-3 mb-5">
-                    <button className="btn hover:bg-green hover:text-white" style={{ width: '400px' }}>
-                        <FcGoogle /> Signup with Google
-                    </button>
-                </div>
-            </div>
-            <Modal /> {/* Rendering the Modal component */}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
-export default Signup; // Exporting the Signup component
-
-
-
-
+export default Signup;
