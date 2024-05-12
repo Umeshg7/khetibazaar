@@ -8,10 +8,10 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOption, setSortOption] = useState("default");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8); 
+  const [itemsPerPage] = useState(8);
 
   useEffect(() => {
-    // Fetch data from the backend
+    // fetch data from backend
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:678/menu");
@@ -40,13 +40,12 @@ const Products = () => {
   const showAll = () => {
     setFilteredItems(menu);
     setSelectedCategory("all");
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
   const handleSortChange = (option) => {
     setSortOption(option);
 
-    // Logic for sorting based on the selected option
     let sortedItems = [...filteredItems];
 
     switch (option) {
@@ -71,7 +70,6 @@ const Products = () => {
     setCurrentPage(1);
   };
 
-  console.log(filteredItems);
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -79,114 +77,87 @@ const Products = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-
   return (
-    <div>
-      {/* menu banner */}
-      <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
-        <div className="py-5 flex flex-col items-center justify-center mt-10">
-          {/* content */}
-          <div className=" text-center px-40 space-y-7">
-            <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug mt-10">
-               Explore the freshest local <span className="text-green">products</span>
-            </h2>
-          </div>
-        </div>
+    <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
+      <div className="py-5 flex flex-col items-center justify-center mt-10">
+        <h2 className="text-4xl font-bold mt-10">
+          Explore the freshest local <span className="text-green">products</span>
+        </h2>
       </div>
 
-             <div className="flex justify-center my-3 mb-10">
+      <div className="flex flex-wrap justify-center my-3 mb-10">
         {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }).map((_, index) => (
           <button
             key={index + 1}
             onClick={() => paginate(index + 1)}
             className={`mx-1 px-3 py-1 rounded-full ${
-              currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"
+              currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200 text-gray-700"
             }`}
+            style={{ fontSize: "14px", minWidth: "30px" }} // Adjust font size and minimum width for responsiveness
           >
             {index + 1}
           </button>
         ))}
       </div>
 
-      {/* menu shop  */}
-      <div className="section-container">
-        <div className="flex flex-col md:flex-row flex-wrap md:justify-between items-center space-y-3 mb-8">
-          
-           {/* all category buttons */}
-          <div className="flex flex-row justify-start md:items-center md:gap-8 gap-4  flex-wrap">
-            <button
-              onClick={showAll}
-              className={selectedCategory === "all" ? "active" : ""}
-            >
-              All
-            </button>
-            <button
-              onClick={() => filterItems("vegetables")}
-              className={selectedCategory === "vegetables" ? "active" : ""}
-            >
-              Vegetables
-            </button>
-            <button
-              onClick={() => filterItems("fruits")}
-              className={selectedCategory === "fruits" ? "active" : ""}
-            >
-              Fruits
-            </button>
-            <button
-              onClick={() => filterItems("meat")}
-              className={selectedCategory === "meat" ? "active" : ""}
-            >
-              Egg & Meat
-            </button>
-            <button
-              onClick={() => filterItems("grains")}
-              className={selectedCategory === "grains" ? "active" : ""}
-            >
-              Grains
-            </button>
-            <button
-              onClick={() => filterItems("dairy")}
-              className={selectedCategory === "dairy" ? "active" : ""}
-            >
-              Dairy Products
-            </button>
-            <button
-              onClick={() => filterItems("drinks")}
-              className={selectedCategory === "drinks" ? "active" : ""}
-            >
-              Fresh drinks
-            </button>
-          </div>
-
-            {/* filter options */}
-          <div className="flex justify-end mb-4 rounded-sm">
-            <div className="bg-green p-2 ">
-              <FaFilter className="text-white h-4 w-4" />
-            </div>
-            <select
-              id="sort"
-              onChange={(e) => handleSortChange(e.target.value)}
-              value={sortOption}
-              className="bg-green text-white px-2 py-1 rounded-sm"
-            >
-              <option value="default"> Default</option>
-              <option value="A-Z">A-Z</option>
-              <option value="Z-A">Z-A</option>
-              <option value="low-to-high">Low to High</option>
-              <option value="high-to-low">High to Low</option>
-            </select>
-          </div>
+      <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+      <div className="flex flex-wrap gap-2 md:gap-4">
+          <button onClick={showAll} className={selectedCategory === "all" ? "active bg-green text-white" : "bg-gray-200 text-gray-700 rounded-md px-3 py-1"}>
+            All
+          </button>
+          <button onClick={() => filterItems("vegetables")} className={selectedCategory === "vegetables" ? "active bg-green text-white" : "bg-gray-200 text-gray-700 rounded-md px-3 py-1"}>
+            Vegetables
+          </button>
+          <button onClick={() => filterItems("fruits")} className={selectedCategory === "fruits" ? "active bg-green text-white" : "bg-gray-200 text-gray-700 rounded-md px-3 py-1"}>
+            Fruits
+          </button>
+          <button onClick={() => filterItems("meat")} className={selectedCategory === "meat" ? "active bg-green text-white" : "bg-gray-200 text-gray-700 rounded-md px-3 py-1"}>
+            Egg & Meat
+          </button>
+          <button onClick={() => filterItems("grains")} className={selectedCategory === "grains" ? "active bg-green text-white" : "bg-gray-200 text-gray-700 rounded-md px-3 py-1"}>
+            Grains
+          </button>
+          <button onClick={() => filterItems("dairy")} className={selectedCategory === "dairy" ? "active bg-green text-white" : "bg-gray-200 text-gray-700 rounded-md px-3 py-1"}>
+            Dairy Products
+          </button>
+          <button onClick={() => filterItems("drinks")} className={selectedCategory === "drinks" ? "active bg-green text-white" : "bg-gray-200 text-gray-700 rounded-md px-3 py-1"}>
+            Fresh Drinks
+          </button>
         </div>
 
-        {/* product card */}
-        <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 ">
-          {currentItems.map((item) => (
-            <Cards key={item._id} item={item} />
-          ))}
+        {/* filter options */}
+        <div className="flex items-center">
+          <div className="bg-green p-2 mr-2">
+            <FaFilter className="text-white h-4 w-4" />
+          </div>
+          <select
+            id="sort"
+            onChange={(e) => handleSortChange(e.target.value)}
+            value={sortOption}
+            className="bg-green text-white px-2 py-1 rounded-sm"
+          >
+            <option value="default">Default</option>
+            <option value="A-Z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+          </select>
         </div>
       </div>
 
-       {/* Pagination */}
+      {/* products card */}
+      <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4">
+        {currentItems.map((item) => (
+          <div key={item._id} className="border border-green rounded-md overflow-hidden">
+            {/* Example Card Content (Adjust as per your requirement) */}
+            <img src={item.image} alt={item.name} className="w-full h-auto" />
+            <div className="p-3">
+              <h3 className="text-lg font-semibold">{item.name}</h3>
+              <p className="text-gray-600">${item.price}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
     </div>
   );
