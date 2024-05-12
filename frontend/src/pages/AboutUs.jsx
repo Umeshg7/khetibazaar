@@ -10,12 +10,12 @@ import {
 import { Link } from 'react-router-dom';
 
 const AboutUs = () => (
-  <div className="max-w-screen-2xl container mx-auto xl:px-24 bg-gradient-to-r from-[#FAFAFA] to-[#FCFCFC] to-100% pt-20 mt-10">
-        <section className="py-10 bg-green text-white">
+  <div className="container mx-auto px-4 lg:px-24 py-10">
+        <section className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center py-10">
       <div className="mx-auto flex items-center justify-around">
         {/* Products */}
         <div className="flex items-center space-x-5">
-          <FaBox className="text-4xl" />
+          <FaBox className="text-4xl mx-auto mb-2" />
           <div>
             <h3 className="text-3xl font-bold text-center">100+</h3>
             <p className="text-lg">PRODUCTS</p>
@@ -54,7 +54,7 @@ const AboutUs = () => (
     <div className="py-10 flex flex-col md:flex-row-reverse items-center justify-between">
       {/* Image section */}
       <div className="md:w-1/2">
-        <img src="/images/aboutus.png" alt="About Us" />
+        <img src="/images/aboutus.png" alt="About Us" className="w-full"/>
         <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4" />
       </div>
 
@@ -95,7 +95,7 @@ const AboutUs = () => (
 
 
     {/* Call to Action Section */}
-    <section className="py-20 bg-gradient-to-r from-[#FAFAFA] to-[#FCFCFC] to-100%">
+    <section className="text-center py-10">
       <div className="max-w-4xl mx-auto text-center">
         <h3 className="text-4xl font-bold mb-6">Experience the Bounty of Nature with Khetibazar</h3>
         <p className="text-lg mb-8">
