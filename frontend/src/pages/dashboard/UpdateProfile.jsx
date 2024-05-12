@@ -6,7 +6,7 @@ import axios from 'axios'; // For image upload
 import Swal from 'sweetalert2'; // For success/error notifications
 
 const UpdateProfile = () => {
-  const { updateUserProfile } = useContext(AuthContext);
+  const { user, updateUserProfile } = useContext(AuthContext); // Access user context
   const {
     register,
     handleSubmit,
@@ -15,10 +15,8 @@ const UpdateProfile = () => {
   } = useForm();
 
   const location = useLocation();
-  const navigate = useNavigate();
-  const from = location.state?.from?.pathname || '/';
 
-  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY; // ImgBB API key
+  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY_PROFILE; // ImgBB API key
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const onSubmit = async (data) => {
@@ -52,8 +50,8 @@ const UpdateProfile = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        reset();
 
-        navigate(from, { replace: true });
       }
     } catch (error) {
       console.error('Error updating profile:', error);
@@ -63,13 +61,24 @@ const UpdateProfile = () => {
         text: 'An error occurred while updating your profile.',
       });
     }
+    
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen" >
+      {/* Display user profile image */}
+
+            <div className="w-24 h-24 rounded-full overflow-hidden mb-6">
+              <a href={user.photoURL}  >
+                <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
+              </a>
+            </div>
       <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="font-bold">Update Your Profile</h3>
+          {/* Display user's profile information */}
+          <p>Name: {user.displayName}</p>
+          <p>Email: {user.email}</p>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>

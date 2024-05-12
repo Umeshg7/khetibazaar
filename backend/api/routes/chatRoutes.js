@@ -11,4 +11,7 @@ router.get('/', chatController.getAllMessages);
 
 router.get('/:sender', chatController.getMessagesBySender);
 
+router.delete('/:id', chatController.deleteMessage)
+
+
 module.exports = router;

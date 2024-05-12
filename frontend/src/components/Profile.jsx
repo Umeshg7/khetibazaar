@@ -1,6 +1,16 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthProvider'
 import { Link } from 'react-router-dom'
+import { CgProfile } from "react-icons/cg";
+import { MdFavoriteBorder } from "react-icons/md";
+import { MdShoppingCartCheckout } from "react-icons/md";
+import { MdDashboardCustomize } from "react-icons/md";
+import { MdReportProblem } from "react-icons/md";
+
+import { IoLogOut } from "react-icons/io5";
+
+
+
 
 // eslint-disable-next-line react/prop-types
 const Profile = ({user}) => {
@@ -14,6 +24,7 @@ const Profile = ({user}) => {
         })
 
     }
+    
   return (
     <div>
         <div className="drawer drawer-end z-50">
@@ -26,7 +37,7 @@ const Profile = ({user}) => {
       
         // eslint-disable-next-line react/prop-types
         user.photoURL ? <img
-        alt="T"
+        alt="profile"
         // eslint-disable-next-line react/prop-types
         src={user.photoURL}
          /> : <img alt='' src='https://i.ibb.co/NWZfwBn/636285684763067730-Genius-Portraits-001-modified.png'/>
@@ -40,25 +51,28 @@ const Profile = ({user}) => {
       {/* Sidebar content here */}
       
       <li>
-        <a href= "/update-profile">Profile</a>
+        <a href= "/update-profile"><CgProfile size={25}/>Profile</a>
         </li>
         <li>
-        <a href= "/favorite">Your Favourite</a>
+        <a href= "/favorite"> <MdFavoriteBorder size={25} />Your Favourite</a>
         </li>
       <li>
-        <a href='/order'>Order</a>
+        <a href='/order'> <MdShoppingCartCheckout size={25} />Order</a>
         </li>
 
         <li>
-        <Link to= "/dashboard">Dashboard</Link>
+        <Link to= "/dashboard"><MdDashboardCustomize size={25} />Dashboard</Link>
+        </li>
+
+        <li>
+        <Link to= "/report-problem" ><MdReportProblem size={25}/>Report a Problem</Link>
         </li>
 
       <li>
-        <a>Setting</a>
+        <a onClick={handleLogout}><IoLogOut size={25} />Logout</a>
         </li>
-      <li>
-        <a onClick={handleLogout}>Logout</a>
-        </li>
+
+
     </ul>
   </div>
 </div>

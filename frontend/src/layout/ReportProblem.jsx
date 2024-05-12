@@ -1,23 +1,27 @@
-// components/admin/AddChatMessage.jsx
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import useAxiosSecure from "../../../hooks/useAxiosSecure"
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { AuthContext } from "../contexts/AuthProvider"; // Import the AuthContext
 import Swal from "sweetalert2";
 
 const AddChatMessage = () => {
   const { register, handleSubmit, reset } = useForm();
   const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext); // Access the authenticated user's information from the AuthContext
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosSecure.post("/chat", data);
+      // Merge the user's name with the form data
+      const formData = { ...data, sender: user?.displayName };
+      
+      const response = await axiosSecure.post("/chat", formData);
 
       if (response.status === 201) {
         reset();
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Chat message sent successfully!",
+          title: "Report sent successfully!",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -33,28 +37,16 @@ const AddChatMessage = () => {
   };
 
   return (
-    <div className="w-full md:w-[870px] px-4 mx-auto">
+    <div className="w-full md:w-[870px] px-4 mx-auto mt-20 pt-5">
       <h2 className="text-2xl font-semibold my-4">
-        Send a New <span className="text-green">Chat Message</span>
+        Report  <span className="text-green">a Problem</span>
       </h2>
 
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-control">
+          <div className="form-control mt-7">
             <label className="label">
-              <span className="label-text">Sender*</span>
-            </label>
-            <input
-              type="text"
-              {...register("sender", { required: true })}
-              placeholder="Sender"
-              className="input input-bordered w-full"
-            />
-          </div>
-
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Message*</span>
+              <span className="label-text">Problem description</span>
             </label>
             <textarea
               {...register("message", { required: true })}
@@ -63,9 +55,9 @@ const AddChatMessage = () => {
             />
           </div>
 
-        <div className=" pt-10">
+        <div className=" pt-5">
         <button type="submit" className="btn bg-green text-white px-6 ">
-            Add to Chat DB 
+            Send 
           </button>
         </div>
         </form>
