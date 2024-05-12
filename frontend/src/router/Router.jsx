@@ -7,6 +7,12 @@ import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import UpdateProfile from "../pages/dashboard/UpdateProfile";
 import CartPage from "../pages/shop/CartPage";
 import ErrorPage from "../../public/error";
+import DashboardLayout from "../layout/DashboardLayout";
+import Users from "../pages/dashboard/admin/Users";
+import Dashboard from "../pages/dashboard/admin/Dashboard";
+import AboutUs from "../pages/AboutUs";
+import SearchResults from "../pages/SearchResults";
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -20,7 +26,10 @@ const router = createBrowserRouter([
           path :"/Products",
           element : <PrivateRouter><Products/></PrivateRouter>
         },
-
+        {
+           path: "/aboutus",
+           element: <PrivateRouter><AboutUs/></PrivateRouter>
+        },
         {
           path : "/cart-page",
           element :<PrivateRouter><CartPage/></PrivateRouter>
@@ -41,6 +50,24 @@ const router = createBrowserRouter([
     {
       path : "/signup",
       element: <Signup/>
+    },
+    {
+      path : "/search-page",
+      element : <SearchResults/>
+    },
+    {
+      path: 'dashboard',
+      element: <PrivateRouter><DashboardLayout/></PrivateRouter>,
+      children: [
+        {
+          path: '',
+          element: <Dashboard/>
+        },
+        {
+          path: 'users',
+          element: <Users/>
+        }
+      ]
     }
   ]);
 

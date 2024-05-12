@@ -28,10 +28,8 @@ const SearchResults = () => {
         },
       });
 
-      console.log('API Response:', response.data);
       setSearchResults(response.data);
     } catch (error) {
-      console.error('Error fetching search results:', error);
       setError('Error fetching search results. Please try again.');
       setSearchResults([]);
     } finally {
@@ -41,7 +39,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     handleSearch(); // Perform an initial search on component mount
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  }, [selectedCategory]); // Trigger search whenever selectedCategory changes
 
   return (
     <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', fontFamily: 'Arial, sans-serif' }}>
@@ -87,7 +85,6 @@ const SearchResults = () => {
                 <div>
                   <h3 style={{ fontSize: '18px', marginBottom: '5px', color: '#333' }}>{product.name}</h3>
                   <p style={{ fontSize: '16px', color: '#666', marginBottom: '5px' }}>Category: {product.category}</p>
-                  {/* Add more product details here */}
                 </div>
               </li>
             ))}

@@ -107,10 +107,13 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
+        <Link to="search-page">
         <div className="navbar-end" style={{ paddingRight: '40px' }}>
           <button className="btn btn-ghost btn-circle mr-3 hidden lg:flex">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </button>
+          </div>
+          </Link>
 
         <Link to="cart-page">
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-4 lg:flex hidden items-center justify_center">
@@ -133,7 +136,6 @@ const Navbar = () => {
          
          {/* //import login page  */}
               <Modal/> 
-        </div>
       </div>
     </header>
   );

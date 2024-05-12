@@ -114,7 +114,6 @@ const Modal = () => {
                             onClick={() => document.getElementById("my_modal_5").close()} // Closing the modal
                             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                         >
-                            ✕
                         </button>
                     </form>
 

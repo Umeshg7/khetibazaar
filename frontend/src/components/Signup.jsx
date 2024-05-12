@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"; // Importing 
 import { useForm } from "react-hook-form"; // Importing useForm hook from react-hook-form library
 import Modal from "./Model"; // Importing the Modal component
 import { AuthContext } from "../contexts/AuthProvider"; // Importing AuthContext from custom context provider
-
+import axios from 'axios';
 // Defining the Signup component
 const Signup = () => {
     // Destructuring properties from useForm hook
@@ -15,7 +15,7 @@ const Signup = () => {
     } = useForm();
 
     // Destructuring createUser and login functions from AuthContext
-    const {createUser, login} = useContext(AuthContext);
+    const {createUser, login, updateUserProfile} = useContext(AuthContext);
 
     // Getting current location and navigation function from react-router-dom
     const location = useLocation();
@@ -29,11 +29,23 @@ const Signup = () => {
         // Creating user with provided email and password
         createUser(email, password).then((result) => {
             // Signed up successfully
+            //changes 
             const user = result.user;
-            alert("Account creation successfully done!");
-            document.getElementById("my_modal_5").close(); // Closing the modal after successful signup
-            navigate(from, {replace: true}); // Navigating to previous page or default page
-        }).catch((error) => {
+            updateUserProfile(data.email, data.photoURL).then(() => {
+                const userInfo = {
+                    name:data.name,
+                    email:data.email,
+                }
+                axios.post('http://localhost:5174/users',userInfo) 
+                  .then( (response) => {
+                    //console.log(response);
+                })
+                alert("Account creation successfully done!");
+                document.getElementById("my_modal_5").close(); // Closing the modal after successful signup
+                navigate(from, {replace: true}); // Navigating to previous page or default page
+                  })
+            })
+        .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             // Handle error

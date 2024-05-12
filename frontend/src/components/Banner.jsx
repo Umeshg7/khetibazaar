@@ -1,5 +1,4 @@
 import React from "react";
-
 const Banner = () => {
   return (
     // Container for the banner with gradient background
@@ -115,12 +114,10 @@ const Banner = () => {
           <button className="bg-green font-semibold btn text-white px-8 py-3 rounded-full">
             Order Now 
           </button>
-
         </div>
         
       </div>
     </div>
   );
 };
-
 export default Banner;
