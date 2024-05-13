@@ -39,26 +39,10 @@ const Profile = ({user}) => {
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
       
-      <li>
-        <a href= "/update-profile">Profile</a>
-        </li>
-        <li>
-        <a href= "/favorite">Your Favourite</a>
-        </li>
-      <li>
-        <a href='/order'>Order</a>
-        </li>
-
-        <li>
-        <Link to= "/dashboard">Dashboard</Link>
-        </li>
-
-      <li>
-        <a>Setting</a>
-        </li>
-      <li>
-        <a onClick={handleLogout}>Logout</a>
-        </li>
+      <li><a href= "/update-profile">Profile</a></li>
+      <li><a>Order</a></li>
+      <li><a>Setting</a></li>
+      <li><a onClick={handleLogout}>Logout</a></li>
     </ul>
   </div>
 </div>
