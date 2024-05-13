@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { MdDashboard, MdDashboardCustomize } from "react-icons/md";
+import { IoIosChatboxes } from "react-icons/io";
 import Login from "../components/Login";
 import {
   FaEdit,
@@ -103,6 +104,14 @@ const DashboardLayout = () => {
                 <FaEdit /> Manage Items
               </Link>
             </li>
+
+            <li>
+              <Link to="/dashboard/add-message">
+              <IoIosChatboxes />
+ Add Chat-box Message
+              </Link>
+            </li>
+
             <li className="mb-3">
               <Link to="/dashboard/users">
                 <FaUser /> All Users

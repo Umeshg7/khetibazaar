@@ -84,7 +84,7 @@ const Products = () => {
     <div>
       {/* menu banner */}
       <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
-        <div className="py-20 flex flex-col items-center justify-center">
+        <div className="py-5 flex flex-col items-center justify-center mt-10">
           {/* content */}
           <div className=" text-center px-40 space-y-7">
             <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug mt-10">
@@ -92,6 +92,20 @@ const Products = () => {
             </h2>
           </div>
         </div>
+      </div>
+
+             <div className="flex justify-center my-3 mb-10">
+        {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }).map((_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => paginate(index + 1)}
+            className={`mx-1 px-3 py-1 rounded-full ${
+              currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
 
       {/* menu shop  */}
@@ -173,19 +187,7 @@ const Products = () => {
       </div>
 
        {/* Pagination */}
-       <div className="flex justify-center my-8">
-        {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }).map((_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => paginate(index + 1)}
-            className={`mx-1 px-3 py-1 rounded-full ${
-              currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"
-            }`}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+
     </div>
   );
 };

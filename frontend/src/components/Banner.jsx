@@ -4,38 +4,40 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
-      <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-4 md:gap-8 mt-20">
+      <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-4 md:gap-8 mt-20 pt-10">
 
         {/* img */}
         <div className="md:w-1/2">
             <img src="/images/home.jpg" alt="" />
             <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
               <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3">
-                <Link to="/products/642" className="flex items-center gap-3">
+                <Link to="/products/" className="flex items-center gap-3">
                   {/* Image and text within the Link */}
                   <img
-                    src="/images/apple.png"
+                    src="/images/products/vegetables.png"
+                    alt="Vegetable"
+                    style={{ width: '90px', height: '60px', borderRadius: '50%' }}
+                  />
+                  <div className="space-y-1">
+                    <h5>Mix Vegetables</h5>
+                    <p className="text-red">NPR: 1200</p>
+                  </div>
+                </Link>
+              </div>
+              <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3">
+                <Link to="/products/663ba87179e985d94e32dff8" className="flex items-center gap-3">
+                  {/* Image and text within the Link */}
+                  <img
+                    src="/images/products/mix_fruit.png"
                     alt="Fresh Apple"
                     style={{ width: '90px', height: '60px', borderRadius: '50%' }}
                   />
                   <div className="space-y-1">
-                    <h5>Fresh Apple</h5>
-                    <p className="text-red">NPR: 270/kg</p>
+                    <h5>Mix Fruits</h5>
+                    <p className="text-red">NPR: 1400</p>
                   </div>
                 </Link>
               </div>
-            <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 hidden md:flex">
-              <Link to="/products/642c155b2c4774f05c36ee033"
-                className="flex items-center gap-3" 
-                style={{ textDecoration: 'none' }} 
-              >
-                <img src="/images/grains.png" alt="Grains" className="rounded-full w-20 h-20" />
-                <div className="space-y-1">
-                  <h5>Refined Grains</h5>
-                  <p className="text-red">NPR: 150/kg</p>
-                </div>
-              </Link>
-            </div>
           </div>
         </div>
         
