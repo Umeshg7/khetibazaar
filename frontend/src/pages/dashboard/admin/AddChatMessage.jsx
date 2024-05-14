@@ -34,7 +34,7 @@ const AddChatMessage = () => {
 
   return (
     <div className="w-full md:w-[870px] px-4 mx-auto">
-      <h2 className="text-2xl font-semibold my-4">
+      <h2 className="text-2xl font-semibold my-5">
         Send a New <span className="text-green">Chat Message</span>
       </h2>
 
