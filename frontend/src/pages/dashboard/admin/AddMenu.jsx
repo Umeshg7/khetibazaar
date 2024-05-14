@@ -1,29 +1,36 @@
 import React from "react";
-import { FaUtensils } from "react-icons/fa";
-import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from "sweetalert2";
+import { FaUtensils } from "react-icons/fa"; // Importing the utensil icon from react-icons library
+import { useForm } from "react-hook-form"; // Importing form handling functions from react-hook-form library
+import useAxiosPublic from "../../../hooks/useAxiosPublic"; // Custom hook for making public axios requests
+import useAxiosSecure from "../../../hooks/useAxiosSecure"; // Custom hook for making secure axios requests
+import Swal from "sweetalert2"; // Importing SweetAlert2 for displaying alerts
 
 //Adding AddMenu Section for Admin Panel
 const AddMenu = () => {
-  const { register, handleSubmit, reset } = useForm();
-  const axiosPublic = useAxiosPublic();
-  const axiosSecure = useAxiosSecure();
+  const { register, handleSubmit, reset } = useForm(); // Destructuring form handling functions from useForm hook
+  const axiosPublic = useAxiosPublic(); // Custom hook instance for making public axios requests
+  const axiosSecure = useAxiosSecure(); // Custom hook instance for making secure axios requests
 
+  // Retrieving image hosting key from environment variables
   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+  // Constructing image hosting API endpoint with the retrieved key
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
+  // Function to handle form submission
   const onSubmit = async (data) => {
     try {
+      // Creating FormData object with the selected image file
       const imageFile = { image: data.image[0] };
+      // Sending image to image hosting API using public axios instance
       const hostingImg = await axiosPublic.post(image_hosting_api, imageFile, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
+      // Checking if image hosting was successful
       if (hostingImg.data.success) {
+        // Constructing menu item object with form data and hosted image URL
         const menuItem = {
           name: data.name,
           category: data.category,
@@ -32,10 +39,13 @@ const AddMenu = () => {
           image: hostingImg.data.data.display_url,
         };
 
+        // Adding menu item to database using secure axios instance
         const response = await axiosSecure.post("/menu", menuItem);
 
+        // Displaying success message if menu item was added successfully
         if (response.status === 200 || response.status === 201) {
-          reset();
+          reset(); // Resetting form fields
+          // Displaying success alert
           Swal.fire({
             position: "center",
             icon: "success",
@@ -47,6 +57,7 @@ const AddMenu = () => {
       }
     } catch (error) {
       console.error("Error adding menu item:", error);
+      // Displaying error alert
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -61,10 +72,10 @@ const AddMenu = () => {
         Upload A New <span className="text-green">Product Item</span>
       </h2>
 
-      {/* form here */}
+      {/* Form */}
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Form Fields */}
+          {/* Product Name Field */}
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Product Name*</span>
@@ -77,9 +88,9 @@ const AddMenu = () => {
             />
           </div>
 
-          {/* Category and Price */}
+          {/* Category and Price Fields */}
           <div className="flex items-center gap-4">
-            {/* categories */}
+            {/* Category Field */}
             <div className="form-control w-full my-6">
               <label className="label">
                 <span className="label-text">Category*</span>
@@ -101,7 +112,7 @@ const AddMenu = () => {
               </select>
             </div>
 
-            {/* prices */}
+            {/* Price Field */}
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Price*</span>
@@ -115,7 +126,7 @@ const AddMenu = () => {
             </div>
           </div>
 
-          {/* Description */}
+          {/* Description Field */}
           <div className="form-control">
             <label className="label">
               <span className="label-text">Description</span>
@@ -127,7 +138,7 @@ const AddMenu = () => {
             />
           </div>
 
-          {/* Image Upload */}
+          {/* Image Upload Field */}
           <div className="form-control w-full my-6">
             <input
               {...register("image", { required: true })}
@@ -136,6 +147,7 @@ const AddMenu = () => {
             />
           </div>
 
+          {/* Submit Button */}
           <button type="submit" className="btn bg-green text-white px-6">
             Add Item <FaUtensils />
           </button>
