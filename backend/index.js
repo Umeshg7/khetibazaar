@@ -17,6 +17,8 @@ const userRoutes = require('./api/routes/userRoutes');
 const paymentRoutes = require('./api/routes/paymentRoutes');
 const favoriteRoutes = require("./api/routes/favoriteRoutes"); // Ensure import is correct
 const searchRoutes = require('./api/routes/searchRoutes');
+const adminStats = require('./api/routes/adminStats')
+const orderStats = require('./api/routes/orderStats')
 // middleware
 app.use(cors());
 app.use(express.json());
@@ -46,6 +48,8 @@ app.use('/payments', paymentRoutes);
 app.use("/favorites", favoriteRoutes);
 app.use('/search', searchRoutes);
 app.use('/chat', ChatRoutes); // Use chat routes
+app.use('/adminStats', adminStats)
+app.use('/orderStats', orderStats);
 
 // Stripe payment endpoint
 app.post("/create-payment-intent", async (req, res) => {

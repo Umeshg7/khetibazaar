@@ -11,7 +11,7 @@ const Banner = () => {
         <div className="md:w-1/2">
             <img src="/images/home.jpg" alt="" />
             <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
-              <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3">
+              <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3 border border-green">
                 <Link to="/products/" className="flex items-center gap-3">
                   {/* Image and text within the Link */}
                   <img
@@ -25,7 +25,7 @@ const Banner = () => {
                   </div>
                 </Link>
               </div>
-              <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3">
+              <div className="bg-white px-3 py-2 rounded-2xl shadow-sm w-64 flex items-center gap-3 border border-green">
                 <Link to="/products/663ba87179e985d94e32dff8" className="flex items-center gap-3">
                   {/* Image and text within the Link */}
                   <img
@@ -39,6 +39,7 @@ const Banner = () => {
                   </div>
                 </Link>
               </div>
+
           </div>
         </div>
         

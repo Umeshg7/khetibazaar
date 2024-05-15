@@ -43,5 +43,31 @@ routes.get('/', verifyToken, async (req, res) =>{
     }
 })
 
+//get all payment by admin
+routes.get('/all', async(req, res) => {
+    try {
+        const payments = await Payment.find({}).sort({createdAt:-1}).exec();
+        res.status(200).json(payments)
+    } catch{
+        res.status(404).json({message: error.message});
+    }
+})
+
+// condirming the payment 
+routes.patch('/:id', async(req, res) =>{
+    const payId = req.params.id;
+    const{status} = req.body;
+    try {
+        const updateStatus = await Payment.findByIdAndUpdate(payId, {status: "confirmed"},
+            {new: true, runValidators: true}
+        );
+        if(!updateStatus){
+            return res.status(404).json({message: "Payment not found"});
+        }
+    } catch{
+        res.status(404).json({message: error.message});
+    }
+})
+
 
 module.exports = routes;

@@ -1,6 +1,16 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthProvider'
 import { Link } from 'react-router-dom'
+import { CgProfile } from "react-icons/cg";
+import { MdFavoriteBorder } from "react-icons/md";
+import { MdShoppingCartCheckout } from "react-icons/md";
+import { MdDashboardCustomize } from "react-icons/md";
+import { MdReportProblem } from "react-icons/md";
+
+import { IoLogOut } from "react-icons/io5";
+
+
+
 
 // eslint-disable-next-line react/prop-types
 const Profile = ({user}) => {
@@ -14,6 +24,7 @@ const Profile = ({user}) => {
         })
 
     }
+    
   return (
     <div>
         <div className="drawer drawer-end z-50">
@@ -26,7 +37,7 @@ const Profile = ({user}) => {
       
         // eslint-disable-next-line react/prop-types
         user.photoURL ? <img
-        alt="T"
+        alt="profile"
         // eslint-disable-next-line react/prop-types
         src={user.photoURL}
          /> : <img alt='' src='https://i.ibb.co/NWZfwBn/636285684763067730-Genius-Portraits-001-modified.png'/>
@@ -39,10 +50,6 @@ const Profile = ({user}) => {
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
       
-      <li><a href= "/update-profile">Profile</a></li>
-      <li><a>Order</a></li>
-      <li><a>Setting</a></li>
-      <li><a onClick={handleLogout}>Logout</a></li>
     </ul>
   </div>
 </div>

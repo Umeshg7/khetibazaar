@@ -10,7 +10,19 @@ exports.postMessage = async (req, res) => {
   }
 };
 
-
+exports.deleteMessage = async (req, res) => {
+  const { id } = req.params.id;
+  try {
+    const deletedMessage = await ChatMessage.findByIdAndDelete(id);
+    if (!deletedMessage) {
+      return res.status(404).json({ message: "Message not found" });
+    }
+    res.status(200).json({ message: "Message deleted successfully", deletedMessage });
+  } catch (error) {
+    console.error("Error deleting message:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 exports.getAllMessages = async (req, res) => {
   try {
