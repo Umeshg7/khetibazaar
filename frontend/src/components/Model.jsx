@@ -81,18 +81,18 @@ const Modal = () => {
           >
             <h3 className="font-bold text-lg">Please Login!</h3>
 
-            {/* email */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                {...register("email")}
-              />
-            </div>
+                        {/* Email input field */}
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input
+                                type="email"
+                                placeholder="email"
+                                className="input input-bordered"
+                                {...register("email")} // Registering email input with react-hook-form
+                            />
+                        </div>
 
             {/* password */}
             <div className="form-control">
@@ -112,14 +112,14 @@ const Modal = () => {
               </label>
             </div>
 
-            {/* show errors */}
-            {errorMessage ? (
-              <p className="text-red text-xs italic">
+                        {/* show Errors message for invalid login attempt */}
+                        {errorMessage ? (
+                            <p className="text-red text-xs italic">
                 Provide a correct username & password.
               </p>
             ) : (
               ""
-            )}
+                        )}
 
             {/* submit btn */}
             <div className="form-control mt-4">
@@ -157,4 +157,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default Modal; // Exporting the Modal component

@@ -50,29 +50,6 @@ const Profile = ({user}) => {
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
       
-      <li>
-        <a href= "/update-profile"><CgProfile size={25}/>Profile</a>
-        </li>
-        <li>
-        <a href= "/favorite"> <MdFavoriteBorder size={25} />Your Favourite</a>
-        </li>
-      <li>
-        <a href='/order'> <MdShoppingCartCheckout size={25} />Order</a>
-        </li>
-
-        <li>
-        <Link to= "/dashboard"><MdDashboardCustomize size={25} />Dashboard</Link>
-        </li>
-
-        <li>
-        <Link to= "/report-problem" ><MdReportProblem size={25}/>Report a Problem</Link>
-        </li>
-
-      <li>
-        <a onClick={handleLogout}><IoLogOut size={25} />Logout</a>
-        </li>
-
-
     </ul>
   </div>
 </div>

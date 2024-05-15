@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
+    // Container for the banner with gradient background
     <div className="max-w-screen-2xl container mx-auto xl:px-24 bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%">
       <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-4 md:gap-8 mt-20 pt-10">
 
-        {/* img */}
+        {/* Image section */}
         <div className="md:w-1/2">
             <img src="/images/home.jpg" alt="" />
             <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
@@ -45,8 +46,10 @@ const Banner = () => {
 
         {/* texts */}
         <div className="md:w-1/2 px-4 space-y-5 md:mt-10"> {/* Add top margin to create space */}
+          {/* Heading */}
           <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug"> Farmed Fresh, Delivered to Your <span className="text-green">Doorstep!</span>
           </h2>
+          {/* Description */}
           <p className="text-[#4A4A4A] text-xl">
           Discover Freshness from Field to Table! Enjoy Locally Grown Produce at Its Finest. Dive into Seasonal Fruits, Crisp Vegetables, and Nutrient-Packed Grains.
           </p>
@@ -64,5 +67,4 @@ const Banner = () => {
     </div>
   );
 };
-
 export default Banner;
